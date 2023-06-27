@@ -1,4 +1,4 @@
-# 05-lab-js-dictionnary
+# 05-lab-js-dictionary
 
 CONSIGNE
 
@@ -13,11 +13,10 @@ Vos utilisateurs doivent pouvoir :
 - Voir un message de validation de formulaire lorsque vous essayez de soumettre un formulaire vierge.
 - Lire le fichier audio pour un mot lorsqu'il est disponible.
 - Basculer entre les polices serif, sans serif et monospace.
-- Basculer entre les thèmes clairs et sombres.
-- Afficher : Le mot recherché, sa phonétique, sa définition et les synomymes
+- Basculer entre les thèmes clairs et sombres. (prefers color scheme en CSS).
+- Afficher : Le mot recherché, sa phonétique, sa définition et les synomymes.
 - Voir la disposition optimale de l'interface en fonction de la taille de l'écran de leur appareil.
 - Voir les états de survol et de focus pour tous les éléments interactifs de la page.
-- Basculer en mode sombre ou claire. (prefers color scheme en CSS).
 
 Technologies
 - Écrivez vos styles à l'aide du pré processeur Sass et webpack
