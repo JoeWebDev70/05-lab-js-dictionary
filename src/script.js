@@ -12,7 +12,7 @@ function search() {
     if(word.length != 0){
         let url = "https://api.dictionaryapi.dev/api/v2/entries/en/"+word;
         fetch(url).then(reponse => reponse.json().then(data =>{
-            
+            console.log(data);
             try{
                 // for(let words of data){
                     // let definition = words.meanings[0].definitions[0].definition;
