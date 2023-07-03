@@ -1,9 +1,11 @@
 import "./style.scss";
+import "./js_libs/modal_script.js";
 
 const btn = document.querySelector("button");
 btn.addEventListener("click", function(){
     search();
 });
+
 
 function search() {
     let word = document.querySelector("input").value;

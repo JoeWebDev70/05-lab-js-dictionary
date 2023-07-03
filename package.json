@@ -28,7 +28,7 @@
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
-    "sass": "sass ./src/style.scss:./dist/style.css",
+    "sass": "sass ./src/style.scss:./public/style.css",
     "watch": "webpack --watch --mode=development",
     "serve": "webpack serve",
     "dev": "concurrently \"npm run watch\" \"npm run serve\""

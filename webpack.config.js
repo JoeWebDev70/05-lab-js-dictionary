@@ -16,7 +16,7 @@ const config = {
         script : './src/script.js',
     },
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'public'),
         filename : "script-build.js",
         // clean: true,
     },
@@ -26,7 +26,7 @@ const config = {
         liveReload: true,
         port: 9000,
         static: {
-            directory: path.join(__dirname, "dist"),
+            directory: path.join(__dirname, "public"),
         },
         hot: false,
         https: false,
@@ -71,7 +71,7 @@ const config = {
                 viewport : 'width=device-width, initial-scale=1, shrink-to-fit=no',
                 description : 'Ceci est une page pour webpack'
             },
-            template: "./src/index.html",
+            template: "./src/index.html"
         }),
         new MiniCssExtractPlugin({
             filename: "style.css",

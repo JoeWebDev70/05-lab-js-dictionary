@@ -4,28 +4,70 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- preload fonts -->
+        <link rel="preload" as="font" href="./ressources/fonts/Roboto400.woff2" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" as="font" href="./ressources/fonts/Roboto700.woff2" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" as="font" href="./ressources/fonts/RobotoMono400.woff2" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" as="font" href="./ressources/fonts/RobotoMono700.woff2" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" as="font" href="./ressources/fonts/RobotoSerif400.woff2" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" as="font" href="./ressources/fonts/RobotoSerif700.woff2" type="font/woff2" crossorigin="anonymous">
+        <!-- preload image-->
+        <link rel="preload" as="image" href="./ressources/images/backgroundLight.webp">
+        <!-- favicon + preload-->
+        <link rel="preload" as="image" href="./ressources/images/favicon_16x16.webp" onload="this.rel='shortcut icon'" sizes="16x16">
+        <noscript><link rel="shortcut icon" sizes="16x16" href="./ressources/images/favicon_16x16.webp"></noscript>
+        <!-- meta tag google -->
         <meta name="description" content="Exercise 5 of Javascript : dictionary">
-        <!-- TODO: meta tag ++ -->
+        <!-- meta tag facebook -->
+        <!-- ! A MODIFIER : URL -->
+        <meta property="og:title" content="My Dictionary"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="https://JoeWebDev70/05-lab-js-dictionary.[...]/"/> 
+        <meta property="og:image" content="https://JoeWebDev70/05-lab-js-dictionary.[...]/"/>
+        <meta property="og:description" content="My Dictionary: definitions, phonetics and synonyms"/>
         <title>My Dictionary</title>
     </head>
     <body>
+        <!-- MODALS WINDOWS-->
+        <div class="modal_container modal_info" role="dialog" aria-labelledby="modal_info_tittle" aria-describedby="dialogDesc">
+            <div class="overlay modal_trigger modal_info"></div>
+            <div class="modal modal_info"> 
+                <button aria-label="close modal" class="close_modal modal_trigger modal_info">X</button>
+                <h1 id="modal_info_tittle">Info</h1>
+                <p id="dialogDesc">contenu de test</p>
+            </div>
+        </div>
+        <!-- MODALS WINDOWS-->
         <div id="container">
             <div id="component">
                 <div>
-                    <div id="search_bar">
-                        <input type="text" placeholder="Find word in dictionnary">
-                        <button>Search</button>
-                    </div>
-                    <div>
-                        <p>
-                            <img src="./ressources/images/background_light.webp" alt="photo" width="600" height="600">
-                        </p>
-                    </div>
+                    <p>
+                        <img id="logo" src="./ressources/images/logo_175x70.webp" alt="Logo My Dictionary book drawing and writting color sepia and dark blue" width="175" height="70">
+                    </p>
+                    <h1>Definitions,<br>phonetics and synonyms</h1>
+                    <p id="sticky">
+                        <img src="./ressources/images/backgroundLight.webp" alt="photo" width="600" height="600">
+                    </p>
                 </div>
+                <div id="right_col">
+                    <div id="setting_info">
+                        <p id="setting" class="modal_trigger modal_btn modal_setting">
+                            <img src="./ressources/images/icon_setting_25x25.webp" alt="settings" width="16" height="16">
+                        </p>
+                        <p id="info" class="modal_trigger modal_btn modal_info">?</p>
+                    </div>
+                    <form action="" method="" novalidate>
+                        <input type="text" placeholder="Search in My Dictionary ...">
+                        <button type="button">&#xe81e;</button>
+                    </form>
+                
                 <div id="resultat">
-                    <p><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius non tempora nostrum, veniam labore ad est aliquid perferendis ea ab quae molestiae, aliquam quod expedita at quia consectetur maiores possimus?</span><span>Delectus temporibus voluptate quasi cum itaque perferendis quis mollitia optio quia praesentium, laboriosam ullam veritatis minima asperiores consectetur impedit quas minus tempora ut velit voluptas sit! Pariatur culpa deserunt praesentium!</span><span>Est officia voluptatibus tempora molestiae aut veniam, adipisci consectetur voluptatem nesciunt tenetur! Blanditiis, expedita. Suscipit, rerum non. Perferendis harum, porro ipsa quisquam eos provident culpa cumque, eligendi optio molestias similique.</span><span>In hic blanditiis ipsum officiis dolorem expedita saepe odio sint, nisi exercitationem enim maxime fugiat libero ducimus voluptas necessitatibus est, omnis ab repellat? Eligendi ad quibusdam nihil corrupti molestiae itaque!</span><span>Iste inventore labore enim reprehenderit corrupti placeat temporibus voluptates explicabo eum corporis ea blanditiis veritatis omnis sapiente saepe consequatur numquam voluptatem quia, optio error quaerat tempora dolores, asperiores rem? Est.</span><span>Autem deleniti repellat officia maiores praesentium dolorum itaque mollitia consequuntur amet. Nihil incidunt, a molestiae iure facilis tenetur ratione voluptas pariatur est, sint nemo odit natus consectetur voluptatibus alias ad.</span><span>Ex saepe ratione facilis pariatur dolorem magnam perferendis sint dolor et neque tempore est quasi dolores voluptas, eveniet, quis optio natus voluptatum voluptatem doloremque, sapiente ipsa illum officia. Mollitia, unde.</span><span>Autem consequuntur quisquam sunt adipisci id aspernatur quibusdam earum harum corporis repellat qui iusto ipsa quasi, distinctio animi totam? Quod quaerat numquam iste non consectetur possimus molestiae. Magnam, maxime consequuntur!</span><span>Molestias hic tenetur consequatur libero deleniti modi nihil blanditiis reiciendis totam nemo perspiciatis, veniam esse aliquam dicta quisquam eveniet dolore ut fugit quidem debitis, ab excepturi cupiditate. Cum, delectus magnam.</span><span>Esse minus dolores laudantium totam dolor exercitationem eius illum explicabo voluptas, cumque beatae, nostrum eos optio corporis ea id amet, suscipit quod aspernatur deleniti reprehenderit ut saepe dignissimos. Accusantium, quae?</span></p>
+                    
                 </div>
             </div>
+            
+            </div>
+            
         </div>
     </body>
     

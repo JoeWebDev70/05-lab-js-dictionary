@@ -1,17 +1,15 @@
-$colorBgLight: #FCFCFC;
-$colorBgDark:#030303;
+@import "./sass_libs/fonts_faces.scss";
+@import "./sass_libs/mixins_variables.scss";
+@import "./sass_libs/modal_windows.scss";
 
-@mixin theme($theme: $colorBgLight, $txtColor: black){
-    background-color: $theme;
-    color: $txtColor;
+
+
+:root{
+    font-size: 100%;
 }
 
-.light_theme{
-    @include theme;
-}
-
-.dark_theme {
-    @include theme($theme: $colorBgDark, $txtColor: white);
+body{
+    margin: 0;
 }
 
 #container{
@@ -22,22 +20,90 @@ $colorBgDark:#030303;
 }
 
 #component{
+    // TODO: METTRE UN BORDER AUTOUR DU COMPOSANT COULEUR BLUE POUR LIGHT THEME ET SEPIA POUR POUR DARK THEME
+    border: solid 2px red; 
+    width: 1440px;
     display: flex;
-    width: 80%;
-    gap: 50px;
+    gap: 20px;
 
 }
 
+// general typography 
+h1{
+    text-align: center;
+    margin: 40px 65px 0 70px;
+}
+
+
+p{
+    margin: 0;
+}
 
 img{
-    // width: auto;
-    margin: 0;
-    filter: invert(100%);
-    // -webkit-filter: invert(90%);
-    position: sticky;
-    top: 50px;
+    display: block; 
 }
 
-#resultat{
-    width: 50px;
+// image on left part
+#sticky{
+    position: sticky;
+    top: 10%;
+    z-index: -1;
+}
+// filter: invert(100%);
+
+// right part of component
+#right_col{
+    display: flex;
+    flex-direction: column;
+}
+
+//buttons for modals windows settings and infos
+#setting_info{
+    display: flex;
+}
+
+#setting img{
+    width: 25px;
+    height: 25px;
+}
+
+
+#info{
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    font-size: 20px;
+    color: grey;
+    border: 1.5px solid ;
+    border-radius: 50%;
+}
+
+
+// #text{
+//     display: flex;
+//     flex-direction: column;
+// }
+
+// #search_bar{
+    
+//     display: flex;
+// }
+// #soleil{
+//     color: #FCA311;
+// }
+
+// .light_theme{
+//     @include theme;
+// }
+
+// .dark_theme {
+//     @include theme($theme: $colorBgDarkTheme, $txtColor: $colorTxtDarkTheme);
+// }
+
+@media (prefers-color-scheme: dark)
+{
+    #component{
+        @include theme($theme: $colorBgDarkTheme, $txtColor: $colorTxtDarkTheme);
+    }
+    
 }
