@@ -27,56 +27,71 @@
         <meta property="og:description" content="My Dictionary: definitions, phonetics and synonyms"/>
         <title>My Dictionary</title>
     </head>
-    <body>modal_container
-        <!-- MODALS WINDOWS-->
-        <div data-modal-type="setting" class="modal_container trigger setting" role="dialog" aria-labelledby="modal_setting_tittle" aria-describedby="dialogDesc">
-            <div class="overlay"></div> <!-- modal_trigger-->
+    <body>
+        <!-- MODALS WINDOWS FOR SETTINGS -->
+        <div class="modal_container setting" role="dialog" aria-labelledby="modal_setting_tittle" aria-describedby="dialogDesc">
+            <div class="overlay"></div>
             <div class="modal"> 
-                <button data-modal-type="setting" aria-label="close modal" class="close_modal modal_trigger setting">X</button>
+                <button aria-label="close modal" class="close_modal modal_trigger setting">X</button>
                 <h1 id="modal_setting_tittle">Settings</h1>
                 <p id="dialogDesc">contenu de test </p>
             </div>
         </div>
-        <div id="info_modal" class="modal_container trigger info" role="dialog" aria-labelledby="modal_info_tittle" aria-describedby="dialogDesc">
-            <div class="overlay"></div> <!-- modal_trigger-->
-            <div class="modal"> 
-                <button id="info_close" aria-label="close modal" class="close_modal modal_trigger info">X</button>
-                <h1 id="modal_info_tittle">Info</h1>
-                <p id="dialogDesc">contenu de test</p>
+        <!-- MODALS WINDOWS FOR INFORMATIONS AND PHOTOS CREDITS  -->
+        <div class="modal_container info" role="dialog" aria-labelledby="modal_info_tittle" aria-describedby="dialogDesc">
+            <div class="overlay"></div>
+            <div id="modal_info_txt" class="modal"> 
+                <button aria-label="close modal" class="close_modal modal_trigger info">X</button>
+                <h1 id="modal_info_tittle">About</h1>
+                <p>This site was created by Joelle Moureu as part of the web developer training course with Online FormaPro in Lure, session 23-24.</p>
+                <h2>Credits</h2>
+                <p>
+                    My Dictionary Logo was produced on:
+                    <a href="https://www.freelogodesign.org/" target="_blank"> freelogodesign.org</a>
+                </p>
+                <p>
+                    Dictionary of icons created by Robert Angle:
+                    <a href="https://www.flaticon.com/fr/icones-gratuites/dictionnaire" title="dictionnaire icônes"> Flaticon</a>
+                </p>
+                <p>
+                    <a target="_blank" href="https://icons8.com/icon/364/param%C3%A8tres">Gear wheel</a> icon by: 
+                    <a target="_blank" href="https://icons8.com"> Icons8</a>
+                </p>
             </div>
         </div>
         <!-- MODALS WINDOWS-->
         <div id="container">
             <div id="component">
-                <div>
+                <div> <!--left_col-->
                     <p>
                         <img id="logo" src="./ressources/images/logo_175x70.webp" alt="Logo My Dictionary book drawing and writting color sepia and dark blue" width="175" height="70">
                     </p>
                     <h1>Definitions,<br>phonetics and synonyms</h1>
                     <p id="sticky">
-                        <img src="./ressources/images/backgroundLight.webp" alt="photo" width="600" height="600">
+                        <img src="./ressources/images/backgroundLight.webp" alt="hand-drawn sketch, illustration of a hand holding a stack of books on which a cross-legged little boy is studying." width="600" height="600">
                     </p>
-                </div>
+                </div> <!-- END left_col-->
                 <div id="right_col">
-                    <div id="setting_info">
-                        <p data-modal-type="setting" class="modal_trigger modal_btn setting">
-                            <img src="./ressources/images/icon_setting_25x25.webp" alt="settings" width="16" height="16">
-                        </p>
-                        <p id="info_open" class="modal_trigger modal_btn info">?</p>
+                    <div>
+                        <div id="setting_info">
+                            <p class="modal_trigger modal_btn setting">
+                                <img src="./ressources/images/icon_setting_25x25.webp" alt="Gearwheel for go on setting window" width="16" height="16">
+                            </p>
+                            <p id="info_open" class="modal_trigger modal_btn info" >?</p>
+                        </div>
                     </div>
-                    <form action="" method="" novalidate>
-                        <input type="text" placeholder="Search in My Dictionary ...">
-                        <button type="button">&#xe81e;</button>
-                    </form>
-                
-                <div id="resultat">
-                    
+                    <div>
+                        <form action="" method="" novalidate>
+                            <input type="search" placeholder="Search in My Dictionary ...">
+                            <button type="button">
+                                <img src="./ressources/images/loupe.webp" alt="magnifying glass for searching" width="14" height="23">
+                            </button>
+                        </form>
+                        <div id="resultat">
+                        </div>
+                </div>
                 </div>
             </div>
-            
-            </div>
-            
         </div>
     </body>
-    
 </html>

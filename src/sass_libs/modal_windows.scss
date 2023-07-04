@@ -14,6 +14,7 @@
 }
 
 .overlay{
+    visibility: hidden;
     opacity: 0;
     position: absolute;
     width: 100%;
@@ -23,11 +24,13 @@
 }
 
 .modal_container.active .overlay{
+    visibility: visible;
     opacity: 1;
     transition: opacity 0.4s ease-out;
 }
 
 .modal{
+    visibility: hidden;
     opacity: 0;
     width: 95%;
     max-width: 500px;
@@ -44,6 +47,7 @@
 }
 
 .modal_container.active .modal{
+    visibility: visible;
     opacity: 1;
     transform: translate(-50%, -50%);
     transition: opacity 0.4s 0.2s ease-out, 
@@ -66,3 +70,7 @@
     color: $colorTxtDarkTheme;
     cursor: pointer;
 }
+
+// #modal_info_txt{
+    
+// }

@@ -1,16 +1,30 @@
 
 $colorBgLightTheme: #FCFCFC;
 $colorTxtLightTheme: #232323;
-$colorShadowLightTeme: #000000; /*opacity 0.25*/
+$colorShadowLightTeme: rgba(0, 0, 0, 0.25);
 $colorBgDarkTheme:#030303;
 $colorTxtDarkTheme: #E5E5E5;
-$colorShadowLightTeme: #E5E5E5;  /*opacity 0.25*/
+$colorShadowDarkTeme: rgba(229, 229, 229, 0.25);
 $colorDarkBlue: #14213D;
 $colorSepia: #FCA311;
 $colorError: #FC0000;
 
-@mixin theme($theme: $colorBgLightTheme, $txtColor: $colorTxtLightTheme){
+@mixin theme($theme: $colorBgLightTheme, $txtColor: $colorTxtLightTheme, $borderColor: $colorShadowLightTeme){
     background-color: $theme;
     color: $txtColor;
+    border: solid 0.5px $borderColor; 
+    border-radius: 10px;
+}
+
+@mixin Appearance($howAppear){
+    -webkit-appearance: $howAppear;
+    -moz-appearance: $howAppear;
+    appearance: $howAppear;
+}
+
+@mixin BoxSizing($kindOfBox){
     
+    -webkit-box-sizing: $kindOfBox;
+    -moz-box-sizing: $kindOfBox;
+    box-sizing: $kindOfBox;
 }
