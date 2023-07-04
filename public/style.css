@@ -168,12 +168,12 @@ img {
   display: flex;
 }
 
-#setting img {
+#setting_btn img {
   width: 25px;
   height: 25px;
 }
 
-#info {
+#info_btn {
   width: 22px;
   height: 22px;
   text-align: center;

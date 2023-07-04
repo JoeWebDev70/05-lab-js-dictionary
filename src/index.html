@@ -27,12 +27,20 @@
         <meta property="og:description" content="My Dictionary: definitions, phonetics and synonyms"/>
         <title>My Dictionary</title>
     </head>
-    <body>
+    <body>modal_container
         <!-- MODALS WINDOWS-->
-        <div class="modal_container modal_info" role="dialog" aria-labelledby="modal_info_tittle" aria-describedby="dialogDesc">
-            <div class="overlay modal_trigger modal_info"></div>
-            <div class="modal modal_info"> 
-                <button aria-label="close modal" class="close_modal modal_trigger modal_info">X</button>
+        <div data-modal-type="setting" class="modal_container trigger setting" role="dialog" aria-labelledby="modal_setting_tittle" aria-describedby="dialogDesc">
+            <div class="overlay"></div> <!-- modal_trigger-->
+            <div class="modal"> 
+                <button data-modal-type="setting" aria-label="close modal" class="close_modal modal_trigger setting">X</button>
+                <h1 id="modal_setting_tittle">Settings</h1>
+                <p id="dialogDesc">contenu de test </p>
+            </div>
+        </div>
+        <div id="info_modal" class="modal_container trigger info" role="dialog" aria-labelledby="modal_info_tittle" aria-describedby="dialogDesc">
+            <div class="overlay"></div> <!-- modal_trigger-->
+            <div class="modal"> 
+                <button id="info_close" aria-label="close modal" class="close_modal modal_trigger info">X</button>
                 <h1 id="modal_info_tittle">Info</h1>
                 <p id="dialogDesc">contenu de test</p>
             </div>
@@ -51,10 +59,10 @@
                 </div>
                 <div id="right_col">
                     <div id="setting_info">
-                        <p id="setting" class="modal_trigger modal_btn modal_setting">
+                        <p data-modal-type="setting" class="modal_trigger modal_btn setting">
                             <img src="./ressources/images/icon_setting_25x25.webp" alt="settings" width="16" height="16">
                         </p>
-                        <p id="info" class="modal_trigger modal_btn modal_info">?</p>
+                        <p id="info_open" class="modal_trigger modal_btn info">?</p>
                     </div>
                     <form action="" method="" novalidate>
                         <input type="text" placeholder="Search in My Dictionary ...">

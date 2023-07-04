@@ -8,7 +8,6 @@ $colorShadowLightTeme: #E5E5E5;  /*opacity 0.25*/
 $colorDarkBlue: #14213D;
 $colorSepia: #FCA311;
 $colorError: #FC0000;
-$colorGrey: grey;
 
 @mixin theme($theme: $colorBgLightTheme, $txtColor: $colorTxtLightTheme){
     background-color: $theme;
