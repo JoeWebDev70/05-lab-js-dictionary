@@ -23,7 +23,6 @@ $colorError: #FC0000;
 }
 
 @mixin BoxSizing($kindOfBox){
-    
     -webkit-box-sizing: $kindOfBox;
     -moz-box-sizing: $kindOfBox;
     box-sizing: $kindOfBox;

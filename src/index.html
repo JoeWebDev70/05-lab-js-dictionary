@@ -31,24 +31,27 @@
         <!-- MODALS WINDOWS FOR SETTINGS -->
         <div class="modal_container setting" role="dialog" aria-labelledby="modal_setting_tittle" aria-describedby="dialogDesc">
             <div class="overlay"></div>
-            <div class="modal"> 
+            <div class="modal">
                 <button aria-label="close modal" class="close_modal modal_trigger setting">X</button>
                 <h1 id="modal_setting_tittle">Settings</h1>
-                    <div id="font_choice">
-                        <div>
-                            <input type="radio" id="sans_serif" name="font" value="Roboto" checked>
-                            <label for="sans_serif">sans serif</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="serif" name="font" value="Roboto Serif">
-                            <label for="serif">serif</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="mono" name="font" value="Roboto Mono">
-                            <label for="mono">mono</label>
-                        </div>
+                <div id="font_choice">
+                    <div>
+                        <input type="radio" id="sans_serif" name="font" value="Roboto" checked>
+                        <label for="sans_serif">sans serif</label>
                     </div>
-                <!-- button toggle -->
+                    <div>
+                        <input type="radio" id="serif" name="font" value="Roboto Serif">
+                        <label for="serif">serif</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="mono" name="font" value="Roboto Mono">
+                        <label for="mono">mono</label>
+                    </div>
+                </div>
+                <div role="button" id="toggle_div" class="div_Dark">
+                    <button id="toggle_btn" class="btn_Dark"></button>
+                    <!-- <p class="symbol_Dark"></p> -->
+                </div>
             </div>
         </div>
 
@@ -93,11 +96,12 @@
                 </div> <!-- END left_col-->
                 <div id="right_col">
                     <div>
-                        <div id="setting_info">
+                        <div id="setting_info"> 
+                            <!-- TODO: voir adding tooltip -->
                             <p class="modal_trigger modal_btn setting">
                                 <img src="./ressources/images/icon_setting_25x25.webp" alt="Gearwheel for go on setting window" width="16" height="16">
                             </p>
-                            <p id="info_open" class="modal_trigger modal_btn info" >?</p>
+                            <p id="info_open" class="modal_trigger modal_btn info">?</p>
                         </div>
                     </div>
                     <div>

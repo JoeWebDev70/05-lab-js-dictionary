@@ -1,5 +1,5 @@
 //TODO: VOIR TRAVAILLER LE RESPONSIVE
-
+//shape, displaying, ... of modals windows
 .modal_container{
     visibility: hidden;
     position: fixed;
@@ -71,6 +71,8 @@
     cursor: pointer;
 }
 
+//modal windows for setting font family and light/dark theme
+
 #settings{
     display: flex;
 }
@@ -84,3 +86,61 @@
         align-items: center;
     }
 }
+
+#toggle_div{
+    width: 60px;
+    height: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative;
+}
+
+.div_light{ 
+    border: solid 1px $colorDarkBlue;
+    background-color: $colorBgLightTheme;
+    box-shadow: 0px 5px 5px 0px $colorShadowLightTeme;
+}
+
+.div_light::after{
+    content: '\00263D'; 
+    margin-right: 5px;
+}
+
+.div_Dark::before{
+    // transform: translate(-25px);
+    content: '\002600'; 
+    color: $colorTxtDarkTheme;
+}
+
+.div_Dark{ 
+    border: solid 1px $colorSepia;
+    background-color: $colorBgDarkTheme;
+    box-shadow: 0px 5px 5px 0px $colorShadowDarkTeme;
+}
+
+#toggle_btn{
+    width: 25px;
+    height: 25px;
+    @include Appearance(none);
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.btn_light{
+    border: solid 1px $colorSepia;
+    background-color: $colorDarkBlue;
+    box-shadow: 0px 5px 5px 0px $colorShadowDarkTeme;
+}
+
+.btn_Dark{
+    border: solid 1px $colorDarkBlue;
+    background-color: $colorSepia;
+    box-shadow: 0px 5px 5px 0px $colorShadowLightTeme;
+    // transform: translate(20px);
+}
+
+
+
