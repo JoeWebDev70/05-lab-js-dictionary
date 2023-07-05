@@ -28,15 +28,32 @@
         <title>My Dictionary</title>
     </head>
     <body>
+
         <!-- MODALS WINDOWS FOR SETTINGS -->
         <div class="modal_container setting" role="dialog" aria-labelledby="modal_setting_tittle" aria-describedby="dialogDesc">
             <div class="overlay"></div>
             <div class="modal"> 
                 <button aria-label="close modal" class="close_modal modal_trigger setting">X</button>
                 <h1 id="modal_setting_tittle">Settings</h1>
-                <p id="dialogDesc">contenu de test </p>
+                <form action="" method="" id="settings" novalidate>
+                    <div id="font_choice">
+                        <div>
+                            <input type="radio" id="sans_serif" name="font" value="Roboto" checked>
+                            <label for="sans_serif">sans serif</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="serif" name="font" value="Roboto Mono">
+                            <label for="serif">serif</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="mono" name="font" value="Roboto Serif">
+                            <label for="mono">mono</label>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
+
         <!-- MODALS WINDOWS FOR INFORMATIONS AND PHOTOS CREDITS  -->
         <div class="modal_container info" role="dialog" aria-labelledby="modal_info_tittle" aria-describedby="dialogDesc">
             <div class="overlay"></div>
@@ -57,9 +74,14 @@
                     <a target="_blank" href="https://icons8.com/icon/364/param%C3%A8tres">Gear wheel</a> icon by: 
                     <a target="_blank" href="https://icons8.com"> Icons8</a>
                 </p>
+                <p>
+                    Illustration designed by  
+                   <a href="https://www.freepik.com" target="_blank">Freepik</a>
+                </p>
             </div>
         </div>
         <!-- MODALS WINDOWS-->
+
         <div id="container">
             <div id="component">
                 <div> <!--left_col-->
@@ -81,7 +103,8 @@
                         </div>
                     </div>
                     <div>
-                        <form action="" method="" novalidate>
+                        <!-- TODO : penser à mettre le label à la place du place holder pour google https://developer.mozilla.org/fr/docs/Web/HTML/Element/input/search -->
+                        <form action="" method="" id="searchBar" novalidate>
                             <input type="search" placeholder="Search in My Dictionary ...">
                             <button type="button">
                                 <img src="./ressources/images/loupe.webp" alt="magnifying glass for searching" width="14" height="23">

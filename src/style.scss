@@ -40,6 +40,11 @@ p{
     margin: 0;
 }
 
+a{
+    text-decoration: none;
+    
+}
+
 img{
     display: block; 
 }
@@ -95,11 +100,11 @@ img{
 }
 
 // Form : search Bar
-form{
+#searchBar{
     margin: 55px 0 65px 0;
     display: flex;
     align-items: center;
-
+    
     input{
         @include Appearance(none);
         @include BoxSizing(content-box);
@@ -110,10 +115,10 @@ form{
         border: 1px solid $colorDarkBlue;
         border-radius: 20px;
         box-shadow: 5px 10px 5px 0px $colorShadowLightTeme;
-
-
+    
+    
     }
-
+    
     button{
         margin-left: -50px;
         background-color: transparent;
@@ -123,9 +128,9 @@ form{
         color: black;
         text-transform: none;
         overflow: visible;
-
     }
 }
+
 
 
 @media (prefers-color-scheme: dark)

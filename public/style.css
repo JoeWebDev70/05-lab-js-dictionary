@@ -82,9 +82,7 @@
 
 .modal {
   visibility: hidden;
-  opacity: 0;
-  width: 95%;
-  max-width: 500px;
+  max-width: 460px;
   min-width: 300px;
   padding: 30px;
   background: #fff;
@@ -120,6 +118,19 @@
   cursor: pointer;
 }
 
+#settings {
+  display: flex;
+}
+
+#font_choice {
+  display: flex;
+  flex-direction: column;
+}
+#font_choice div[name=font] {
+  display: flex;
+  align-items: center;
+}
+
 :root {
   font-size: 100%;
 }
@@ -152,6 +163,10 @@ h1 {
 
 p {
   margin: 0;
+}
+
+a {
+  text-decoration: none;
 }
 
 img {
@@ -201,12 +216,12 @@ img {
   border-radius: 50%;
 }
 
-form {
+#searchBar {
   margin: 55px 0 65px 0;
   display: flex;
   align-items: center;
 }
-form input {
+#searchBar input {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -221,7 +236,7 @@ form input {
   border-radius: 20px;
   box-shadow: 5px 10px 5px 0px rgba(0, 0, 0, 0.25);
 }
-form button {
+#searchBar button {
   margin-left: -50px;
   background-color: transparent;
   border: none;

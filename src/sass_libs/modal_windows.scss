@@ -31,9 +31,9 @@
 
 .modal{
     visibility: hidden;
-    opacity: 0;
-    width: 95%;
-    max-width: 500px;
+    // opacity: 0;
+    // width: 100%;
+    max-width: 460px;
     min-width: 300px;
     padding: 30px;
     background: #fff;
@@ -71,6 +71,16 @@
     cursor: pointer;
 }
 
-// #modal_info_txt{
-    
-// }
+#settings{
+    display: flex;
+}
+
+#font_choice{
+    display: flex;
+    flex-direction: column;
+
+    div[name="font"]{
+        display: flex;
+        align-items: center;
+    }
+}
