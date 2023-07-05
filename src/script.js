@@ -1,5 +1,6 @@
 import "./style.scss";
-import "./js_libs/modal_script.js";
+import "./js_libs/modalWindows.js";
+import "./js_libs/changeFont";
 
 // const btn = document.querySelector("button");
 // btn.addEventListener("click", function(){

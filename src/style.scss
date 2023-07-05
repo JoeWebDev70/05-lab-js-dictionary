@@ -1,6 +1,7 @@
 @import "./sass_libs/fonts_faces.scss";
 @import "./sass_libs/mixins_variables.scss";
-@import "./sass_libs/modal_windows.scss";
+@import "./sass_libs/modalWindows.scss";
+
 
 :root{
     font-size: 100%;
@@ -31,18 +32,31 @@ body{
 
 // general typography and settings
 h1{
-    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
     margin: 40px 65px 0 70px;
 }
 
+h2{
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}
+
+h3{
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+}
 
 p{
+    font-size: 16px;
+    font-weight: 400;
     margin: 0;
 }
 
 a{
-    text-decoration: none;
-    
+    text-decoration: none;  
 }
 
 img{
@@ -104,7 +118,7 @@ img{
     margin: 55px 0 65px 0;
     display: flex;
     align-items: center;
-    
+
     input{
         @include Appearance(none);
         @include BoxSizing(content-box);
