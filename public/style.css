@@ -84,7 +84,7 @@
 
 .modal {
   visibility: hidden;
-  max-width: 460px;
+  max-width: 500px;
   min-width: 300px;
   padding: 30px;
   -webkit-box-sizing: border-box;
@@ -208,6 +208,59 @@
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
 }
 
+#modal_info_txt h1 {
+  margin: 5px 0 30px 0;
+}
+#modal_info_txt h2 {
+  margin: 20px 0 20px 0;
+  text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .modal {
+    background-color: #030303;
+    color: #E5E5E5;
+    border: solid 0.5px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  }
+}
+.tooltip_container {
+  position: relative;
+}
+
+.tooltip_container .tooltip_content {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip_container .tooltip_content::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip_container:hover .tooltip_content {
+  visibility: visible;
+  opacity: 1;
+}
+
 :root {
   font-size: 100%;
 }
@@ -309,12 +362,12 @@ img {
   border-radius: 50%;
 }
 
-#searchBar {
+#search_bar {
   margin: 55px 0 65px 0;
   display: flex;
   align-items: center;
 }
-#searchBar input {
+#search_bar input {
   height: 45px;
   width: 60%;
   min-width: 425px;
@@ -328,27 +381,31 @@ img {
   position: relative;
   text-indent: 15px;
 }
-#searchBar input:focus {
+#search_bar input:focus {
   border: none;
   outline: 1px solid #FCA311;
 }
-#searchBar label {
-  z-index: 1;
-  margin-right: -220px;
+#search_bar input::placeholder {
   color: #232323;
   opacity: 0.5;
-  text-shadow: 0px 4px 4px 0px #232323;
 }
-#searchBar button {
-  margin-left: -50px;
+#search_bar.not_valid input:invalid::placeholder {
+  color: #FC0000;
+  opacity: 1;
+}
+#search_bar button {
+  z-index: 2;
+  width: 25px;
+  height: 25px;
+  transform: translate(-150%);
   background-color: transparent;
   border: none;
-  cursor: pointer;
-  z-index: 2;
+  background-image: url(data:image/webp;base64,UklGRioBAABXRUJQVlA4WAoAAAAQAAAADQAAFgAAQUxQSHsAAAABcEhbe+R8CL9Ba1CEjEERUoMgBGGQfoRB+BGC8Lpk6QYQEWrbtmGk9DFnSLJ6wFFOepkanZEkXcA30+ZwkYKqzp2wTGjQKU4eueENGzEaaCKsyvSc8YKPBNmCvacS/Q+SLPU/UAo626aX53IAXDWzsk9JtCkK0p+sXgQAVlA4IIgAAABQBACdASoOABcALh0UikUQ0NDAwA4lkAJ0yhHA3kCyZuAA/QDrMvJPCgQAAP7+xw+6LaoHj8ij/moKqHY41fXECSvri/XNfw7P+ZRftVrDPD2HgsPAkf/9GDbQ5HfWDBLVO8twz3/3j///ebLU89A/8PztYUUJIzdn/7yWNcVKPgX9ETA1wAAA);
+  background-repeat: no-repeat;
 }
-#searchBar input:hover,
-#searchBar label:hover,
-#searchBar button:hover {
+#search_bar input:hover,
+#search_bar label:hover,
+#search_bar button:hover {
   cursor: pointer;
 }
 
@@ -363,14 +420,12 @@ img {
     border: solid 0.5px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
   }
-  #component {
+  #component,
+  #logo {
     border-color: #FCA311;
   }
   a {
     color: #E5E5E5;
-  }
-  #logo {
-    border-color: #FCA311;
   }
   #sticky {
     filter: invert(100%);
@@ -382,19 +437,19 @@ img {
     color: #FCA311;
     border-color: #FCA311;
   }
-  #searchBar input {
+  #search_bar input {
     border-color: #FCA311;
     box-shadow: 5px 10px 5px 0px rgba(229, 229, 229, 0.25);
-    background-color: #14213D;
-  }
-  #searchBar input:focus {
-    background-color: #14213D;
-  }
-  #searchBar label {
+    background-color: #030303;
     color: #E5E5E5;
-    text-shadow: 0px 4px 4px 0px #E5E5E5;
   }
-  #searchBar button {
+  #search_bar input:focus {
+    background-color: #14213D;
+  }
+  #search_bar input::placeholder {
+    color: #E5E5E5;
+  }
+  #search_bar button {
     filter: invert(58%) sepia(97%) saturate(633%) hue-rotate(351deg) brightness(102%) contrast(98%);
   }
 }

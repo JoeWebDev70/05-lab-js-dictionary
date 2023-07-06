@@ -3,17 +3,18 @@ import "./js_libs/modalWindows.js";
 import "./js_libs/changeFont";
 import "./js_libs/toggle";
 
-const searchBar = document.querySelector("#search");
-searchBar.addEventListener("keydown", function() {
-    searchBar.previousElementSibling.classList.add("not_display");
-});
-searchBar.addEventListener("change", function() {
-    if (searchBar.value === "") {
-        searchBar.previousElementSibling.classList.remove("not_display");
+const searchBar = document.querySelector("#search_bar");
+const searchZone = document.querySelector("#search_zone");
+
+searchBar.addEventListener('submit', function(e) {
+    if(!this.checkValidity()){
+        e.preventDefault();
+        this.classList.add('not_valid');
+        if(!searchZone.valid){
+            searchZone.placeholder = searchZone.dataset.error;
+        }
     }
 });
-
-
 
 // const btn = document.querySelector("button");
 // btn.addEventListener("click", function(){

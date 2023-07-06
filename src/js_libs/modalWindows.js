@@ -1,4 +1,3 @@
-
 const modalContainers = document.querySelectorAll(".modal_container");
 const modalTriggers = document.querySelectorAll(".modal_trigger");
 

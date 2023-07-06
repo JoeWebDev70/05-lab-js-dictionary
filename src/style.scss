@@ -1,6 +1,7 @@
 @import "./sass_libs/fonts_faces.scss";
 @import "./sass_libs/mixins_variables.scss";
 @import "./sass_libs/modalWindows.scss";
+@import "./sass_libs/tooltips.scss";
 
 :root{
     font-size: 100%;
@@ -111,7 +112,7 @@ img{
 }
 
 // Form : search Bar
-#searchBar{
+#search_bar{
     margin: 55px 0 65px 0;
     display: flex;
     align-items: center;
@@ -134,21 +135,27 @@ img{
         outline: 1px solid $colorSepia;
     }
 
-    label{
-        z-index: 1;
-        margin-right: -220px;
+    input::placeholder{
         color: $colorTxtLightTheme;
         opacity: 0.5;
-        text-shadow: 0px 4px 4px 0px $colorTxtLightTheme;
+    }
+
+    &.not_valid input:invalid::placeholder{
+        color: $colorError;
+        opacity: 1;
     }
 
     button{
-        margin-left: -50px;
+        z-index: 2;
+        width: 25px;
+        height: 25px;
+        transform: translate(-150%);
         background-color: transparent;
         border: none;
-        cursor: pointer;
-        z-index: 2;
+        background-image: url("./ressources/images/loupe.webp");
+        background-repeat: no-repeat;
     }
+
 
     input:hover, 
     label:hover,
@@ -166,7 +173,8 @@ img{
         @include theme($theme: $colorBgDarkTheme, $txtColor: $colorTxtDarkTheme);
     }
 
-    #component{
+    #component,
+    #logo{
         border-color: $colorSepia;
     }
 
@@ -174,16 +182,10 @@ img{
         color: $colorTxtDarkTheme;
     }
 
-    //left part
-    #logo{
-        border-color: $colorSepia;
-    }
-
     #sticky{
         filter: invert(100%);
     }
     
-    //buttons for modals windows settings and infos
     #setting_info img{
         filter: invert(58%) sepia(97%) saturate(633%) hue-rotate(351deg) brightness(102%) contrast(98%); //sepia
     }
@@ -194,20 +196,20 @@ img{
     }
 
     // Form : search Bar
-    #searchBar{
+    #search_bar{
         input{
-            border-color: $colorSepia;
+            border-color:$colorSepia;
             box-shadow: 5px 10px 5px 0px $colorShadowDarkTeme;
-            background-color: $colorDarkBlue;
+            background-color: $colorBgDarkTheme;
+            color: $colorTxtDarkTheme;
         }
 
         input:focus{
             background-color: $colorDarkBlue;
         }
 
-        label{
+        input::placeholder{
             color: $colorTxtDarkTheme;
-            text-shadow: 0px 4px 4px 0px $colorTxtDarkTheme;
         }
 
         button{

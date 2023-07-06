@@ -1,7 +1,6 @@
 const toggleDiv = document.querySelector("#toggle_div");
 const toggleBtn = document.querySelector("#toggle_btn");
 const body = document.querySelector("body");
-const prefersColor = window.matchMedia("(prefers-color-scheme: dark").matches;
 
 
 toggleDiv.addEventListener("click", function (e) {
@@ -13,7 +12,6 @@ function toggleClass(){
     toggleDiv.classList.toggle("div_Dark");
     toggleBtn.classList.toggle("btn_light");
     toggleBtn.classList.toggle("btn_Dark");
-    console.log(prefersColor);
 
 
     // if(toggleDiv.classList.contains("div_light")){
