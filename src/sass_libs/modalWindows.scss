@@ -11,6 +11,7 @@
 
 .modal_container.active{
     visibility: visible;
+    z-index: 100;
 }
 
 .overlay{
@@ -31,11 +32,10 @@
 
 .modal{
     visibility: hidden;
-    // opacity: 0;
-    // width: 100%;
     max-width: 460px;
     min-width: 300px;
     padding: 30px;
+    @include BoxSizing(border-box);
     background: #fff;
     border-radius: 5px;
     position: absolute;
@@ -73,17 +73,38 @@
 
 //modal windows for setting font family and light/dark theme
 
-#settings{
-    display: flex;
+#setting_modal_div{
+    h1{
+        margin: 5px 0 30px 0;
+    }
+    
+    h1 + div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 65px;  
+    }
 }
 
 #font_choice{
     display: flex;
     flex-direction: column;
+    row-gap: 15px;
 
     div{
         display: flex;
         align-items: center;
+    }
+
+    input{
+        @include Appearance(none);
+        padding: 5px;
+        border: 1px solid $colorSepia;
+        border-radius: 50%;
+    }
+
+    :checked{
+        background-color: $colorSepia;
     }
 }
 
@@ -109,16 +130,15 @@
     margin-right: 5px;
 }
 
-.div_Dark::before{
-    // transform: translate(-25px);
-    content: '\002600'; 
-    color: $colorTxtDarkTheme;
-}
-
 .div_Dark{ 
     border: solid 1px $colorSepia;
-    background-color: $colorBgDarkTheme;
+    background-color: $colorBgLightTheme;
     box-shadow: 0px 5px 5px 0px $colorShadowDarkTeme;
+}
+
+.div_Dark::before{
+    content: '\002600'; 
+    // color: $colorTxtLightTheme;
 }
 
 #toggle_btn{
@@ -139,7 +159,6 @@
     border: solid 1px $colorDarkBlue;
     background-color: $colorSepia;
     box-shadow: 0px 5px 5px 0px $colorShadowLightTeme;
-    // transform: translate(20px);
 }
 
 

@@ -31,26 +31,27 @@
         <!-- MODALS WINDOWS FOR SETTINGS -->
         <div class="modal_container setting" role="dialog" aria-labelledby="modal_setting_tittle" aria-describedby="dialogDesc">
             <div class="overlay"></div>
-            <div class="modal">
+            <div class="modal" id="setting_modal_div">
                 <button aria-label="close modal" class="close_modal modal_trigger setting">X</button>
                 <h1 id="modal_setting_tittle">Settings</h1>
-                <div id="font_choice">
-                    <div>
-                        <input type="radio" id="sans_serif" name="font" value="Roboto" checked>
-                        <label for="sans_serif">sans serif</label>
+                <div>
+                    <div id="font_choice">
+                        <div>
+                            <input type="radio" id="sans_serif" name="font" class="radio_checked" value="Roboto" checked>
+                            <label for="sans_serif">sans serif</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="serif" name="font" class="radio_unchecked" value="Roboto Serif">
+                            <label for="serif">serif</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="mono" name="font" class="radio_unchecked" value="Roboto Mono">
+                            <label for="mono">mono</label>
+                        </div>
                     </div>
-                    <div>
-                        <input type="radio" id="serif" name="font" value="Roboto Serif">
-                        <label for="serif">serif</label>
+                    <div role="button" id="toggle_div" class="div_light">
+                        <button id="toggle_btn" class="btn_light"></button>
                     </div>
-                    <div>
-                        <input type="radio" id="mono" name="font" value="Roboto Mono">
-                        <label for="mono">mono</label>
-                    </div>
-                </div>
-                <div role="button" id="toggle_div" class="div_Dark">
-                    <button id="toggle_btn" class="btn_Dark"></button>
-                    <!-- <p class="symbol_Dark"></p> -->
                 </div>
             </div>
         </div>
@@ -105,9 +106,9 @@
                         </div>
                     </div>
                     <div>
-                        <!-- TODO : penser à mettre le label à la place du place holder pour google https://developer.mozilla.org/fr/docs/Web/HTML/Element/input/search -->
-                        <form action="" method="" id="searchBar" novalidate>
-                            <input type="search" placeholder="Search in My Dictionary ...">
+                       <form action="" method="" id="searchBar" novalidate>
+                            <label for="search">Search in My Dictionary ...</label>
+                            <input type="search" id="search">
                             <button type="button">
                                 <img src="./ressources/images/loupe.webp" alt="magnifying glass for searching" width="14" height="23">
                             </button>
