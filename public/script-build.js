@@ -35,7 +35,7 @@ eval("var modalContainers = document.querySelectorAll(\".modal_container\");\nva
   \*******************************/
 /***/ (() => {
 
-eval("var toggleDiv = document.querySelector(\"#toggle_div\");\nvar toggleBtn = document.querySelector(\"#toggle_btn\");\nvar body = document.querySelector(\"body\");\ntoggleDiv.addEventListener(\"click\", function (e) {\n  toggleClass();\n});\nfunction toggleClass() {\n  toggleDiv.classList.toggle(\"div_light\");\n  toggleDiv.classList.toggle(\"div_Dark\");\n  toggleBtn.classList.toggle(\"btn_light\");\n  toggleBtn.classList.toggle(\"btn_Dark\");\n\n  // if(toggleDiv.classList.contains(\"div_light\")){\n  //     body = useState(\"dark_theme\");\n  // }\n}\n\n//# sourceURL=webpack://my-webpack-project/./src/js_libs/toggle.js?");
+eval("var toggleDiv = document.querySelector(\"#toggle_div\");\nvar body = document.querySelector(\"body\");\nvar elements = document.querySelectorAll(\"body *\");\nvar preferColor = window.matchMedia(\"(prefers-color-scheme: dark)\");\nif (preferColor.matches) {\n  elements.forEach(function (element) {\n    element.classList.add(\"dark_mode\");\n  });\n} else {\n  elements.forEach(function (element) {\n    element.classList.remove(\"dark_mode\");\n  });\n}\npreferColor.addEventListener(\"change\", function (e) {\n  if (e.matches) {\n    elements.forEach(function (element) {\n      element.classList.add(\"dark_mode\");\n    });\n  } else {\n    elements.forEach(function (element) {\n      element.classList.remove(\"dark_mode\");\n    });\n  }\n});\ntoggleDiv.addEventListener(\"click\", function () {\n  elements.forEach(function (element) {\n    element.classList.toggle(\"dark_mode\");\n  });\n});\n\n//# sourceURL=webpack://my-webpack-project/./src/js_libs/toggle.js?");
 
 /***/ }),
 

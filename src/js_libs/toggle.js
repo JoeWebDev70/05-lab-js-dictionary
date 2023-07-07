@@ -1,20 +1,33 @@
 const toggleDiv = document.querySelector("#toggle_div");
-const toggleBtn = document.querySelector("#toggle_btn");
 const body = document.querySelector("body");
+const elements = document.querySelectorAll("body *");
+const preferColor = window.matchMedia("(prefers-color-scheme: dark)");
 
 
-toggleDiv.addEventListener("click", function (e) {
-    toggleClass();
-});  
-
-function toggleClass(){
-    toggleDiv.classList.toggle("div_light");
-    toggleDiv.classList.toggle("div_Dark");
-    toggleBtn.classList.toggle("btn_light");
-    toggleBtn.classList.toggle("btn_Dark");
-
-
-    // if(toggleDiv.classList.contains("div_light")){
-    //     body = useState("dark_theme");
-    // }
+if (preferColor.matches) {
+    elements.forEach(function (element) {
+        element.classList.add("dark_mode");
+    })
+} else {
+    elements.forEach(function (element) {
+        element.classList.remove("dark_mode");
+    })
 }
+
+preferColor.addEventListener("change", (e) =>{
+    if(e.matches){
+        elements.forEach(function (element) {
+            element.classList.add("dark_mode");
+        })
+    }else{
+        elements.forEach(function (element) {
+            element.classList.remove("dark_mode");
+        })
+    }
+});
+    
+toggleDiv.addEventListener("click", function () {
+    elements.forEach(function (element) {
+        element.classList.toggle("dark_mode");
+    })
+});  

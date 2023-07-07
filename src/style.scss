@@ -3,23 +3,23 @@
 @import "./sass_libs/modalWindows.scss";
 @import "./sass_libs/tooltips.scss";
 
-:root{
+:root {
     font-size: 100%;
 }
 
-body{
+body {
     margin: 0;
 }
 
-#container{
+#container {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#component{
-    border: solid 0.5px $colorShadowLightTeme; 
+#component {
+    border: solid 0.5px $colorShadowLightTeme;
     border-radius: 5px;
     width: 1440px;
     padding: 25px 25px 25px 0;
@@ -29,80 +29,81 @@ body{
 }
 
 // general typography and settings
-h1{
+h1 {
     font-size: 32px;
     font-weight: 700;
     margin: 40px 65px 0 70px;
     text-align: center;
 }
 
-h2{
+h2 {
     font-size: 20px;
     font-weight: 700;
     margin: 0;
 }
 
-h3{
+h3 {
     font-size: 16px;
     font-weight: 700;
     margin: 0;
 }
 
-p{
+p {
     font-size: 16px;
     font-weight: 400;
     margin: 0;
 }
 
-// TODO : gestion police
-a{
-    text-decoration: none;  
+a {
+    text-decoration: none;
     color: $colorTxtLightTheme;
 }
 
-img{
-    display: block; 
+a:hover {
+    color: $colorSepia;
+}
+
+img {
+    display: block;
 }
 
 //left part
-#logo{
+#logo {
     margin-left: 25px;
     border: solid 1px $colorDarkBlue;
     border-radius: 10px;
 }
 
-#sticky{
+#sticky {
     position: sticky;
     top: 10%;
-    z-index: -1;
 }
 
-
 // right part of component
-#right_col{
+#right_col {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    div:nth-child(1){
+    div:nth-child(1) {
         align-self: flex-end;
     }
 }
 
 //buttons for modals windows settings and infos
-#setting_info{
+#setting_info {
     display: flex;
     column-gap: 5px;
 }
 
-#setting_info img{
+#setting_info img {
     height: 100%;
     width: auto;
     filter: invert(9%) sepia(64%) saturate(983%) hue-rotate(189deg) brightness(97%) contrast(93%); //dark blue
 }
 
-#info_open{
+#info_open {
     text-align: center;
     font-size: 20px;
     color: $colorDarkBlue;
@@ -112,12 +113,12 @@ img{
 }
 
 // Form : search Bar
-#search_bar{
+#search_bar {
     margin: 55px 0 65px 0;
     display: flex;
     align-items: center;
 
-    input{
+    input {
         height: 45px;
         width: 60%;
         min-width: 425px;
@@ -129,23 +130,23 @@ img{
         position: relative;
         text-indent: 15px;
     }
-    
-    input:focus{
+
+    input:focus {
         border: none;
         outline: 1px solid $colorSepia;
     }
 
-    input::placeholder{
+    input::placeholder {
         color: $colorTxtLightTheme;
         opacity: 0.5;
     }
 
-    &.not_valid input:invalid::placeholder{
+    &.not_valid input:invalid::placeholder {
         color: $colorError;
         opacity: 1;
     }
 
-    button{
+    button {
         z-index: 2;
         width: 25px;
         height: 25px;
@@ -157,65 +158,63 @@ img{
     }
 
 
-    input:hover, 
+    input:hover,
     label:hover,
-    button:hover{
+    button:hover {
         cursor: pointer;
     }
 }
 
-.not_display{
+.not_display {
     visibility: hidden;
 }
 
-@media (prefers-color-scheme: dark){
-    body{
-        @include theme($theme: $colorBgDarkTheme, $txtColor: $colorTxtDarkTheme);
-    }
 
-    #component,
-    #logo{
+//dark mode 
+.dark_mode #component {
+    @include theme($theme: $colorBgDarkTheme, $txtColor: $colorTxtDarkTheme);
+    border-color: $colorSepia;
+}
+
+.dark_mode #logo {
+    border-color: $colorSepia;
+}
+
+.dark_mode a {
+    color: $colorTxtDarkTheme;
+}
+
+.dark_mode #sticky {
+    filter: invert(100%);
+}
+
+.dark_mode #setting_info img {
+    filter: invert(58%) sepia(97%) saturate(633%) hue-rotate(351deg) brightness(102%) contrast(98%); //sepia
+}
+
+.dark_mode #info_open {
+    color: $colorSepia;
+    border-color: $colorSepia;
+}
+
+// Form : search Bar
+.dark_mode #search_bar {
+    input {
         border-color: $colorSepia;
-    }
-
-    a{ 
+        box-shadow: 5px 10px 5px 0px $colorShadowDarkTeme;
+        background-color: $colorBgDarkTheme;
         color: $colorTxtDarkTheme;
     }
 
-    #sticky{
-        filter: invert(100%);
+    input:focus {
+        background-color: $colorDarkBlue;
     }
-    
-    #setting_info img{
+
+    input::placeholder {
+        color: $colorTxtDarkTheme;
+    }
+
+    button {
         filter: invert(58%) sepia(97%) saturate(633%) hue-rotate(351deg) brightness(102%) contrast(98%); //sepia
     }
-
-    #info_open{
-        color: $colorSepia;
-        border-color: $colorSepia;
-    }
-
-    // Form : search Bar
-    #search_bar{
-        input{
-            border-color:$colorSepia;
-            box-shadow: 5px 10px 5px 0px $colorShadowDarkTeme;
-            background-color: $colorBgDarkTheme;
-            color: $colorTxtDarkTheme;
-        }
-
-        input:focus{
-            background-color: $colorDarkBlue;
-        }
-
-        input::placeholder{
-            color: $colorTxtDarkTheme;
-        }
-
-        button{
-            filter: invert(58%) sepia(97%) saturate(633%) hue-rotate(351deg) brightness(102%) contrast(98%); //sepia
-        }
-    }
-
 }
-        
