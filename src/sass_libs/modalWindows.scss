@@ -31,9 +31,9 @@
 
 .modal {
     visibility: hidden;
-    max-width: 500px;
+    max-width: 375px;
     min-width: 300px;
-    padding: 30px;
+    padding: 25px;
     @include BoxSizing(border-box);
     background: #fff;
     border-radius: 5px;
@@ -42,7 +42,7 @@
     left: 50%;
     transform: translate(-50%, calc(-50% - 50px));
     transition: opacity 0.4s ease-out,
-        transform 0.4s ease-out;
+    transform 0.4s ease-out;
 }
 
 .modal_container.active .modal {
@@ -151,6 +151,10 @@
     h2 {
         margin: 20px 0 20px 0;
         text-align: center;
+    }
+    
+    p{
+        margin-bottom: 5px;
     }
 }
 

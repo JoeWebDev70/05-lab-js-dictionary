@@ -84,9 +84,9 @@
 
 .modal {
   visibility: hidden;
-  max-width: 500px;
+  max-width: 375px;
   min-width: 300px;
-  padding: 30px;
+  padding: 25px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -199,6 +199,9 @@
   margin: 20px 0 20px 0;
   text-align: center;
 }
+#modal_info_txt p {
+  margin-bottom: 5px;
+}
 
 .dark_mode .modal {
   background-color: #030303;
@@ -290,7 +293,38 @@ body {
   padding: 25px 25px 25px 0;
   box-sizing: border-box;
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+}
+
+#header_div {
+  display: flex;
+  justify-content: space-between;
+}
+
+#logo {
+  margin-left: 25px;
+  border: solid 1px #14213D;
+  border-radius: 10px;
+}
+
+#setting_info {
+  display: flex;
+  column-gap: 5px;
+}
+
+#setting_info img {
+  height: 100%;
+  width: auto;
+  filter: invert(9%) sepia(64%) saturate(983%) hue-rotate(189deg) brightness(97%) contrast(93%);
+}
+
+#info_open {
+  text-align: center;
+  font-size: 18px;
+  color: #14213D;
+  padding: 0 6px;
+  border: 1.5px solid #14213D;
+  border-radius: 50%;
 }
 
 h1 {
@@ -331,10 +365,15 @@ img {
   display: block;
 }
 
-#logo {
-  margin-left: 25px;
-  border: solid 1px #14213D;
-  border-radius: 10px;
+#body_div {
+  display: flex;
+  gap: 20px;
+}
+
+#left_col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #sticky {
@@ -347,29 +386,6 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-#right_col div:nth-child(1) {
-  align-self: flex-end;
-}
-
-#setting_info {
-  display: flex;
-  column-gap: 5px;
-}
-
-#setting_info img {
-  height: 100%;
-  width: auto;
-  filter: invert(9%) sepia(64%) saturate(983%) hue-rotate(189deg) brightness(97%) contrast(93%);
-}
-
-#info_open {
-  text-align: center;
-  font-size: 20px;
-  color: #14213D;
-  padding: 0 7px;
-  border: 1.5px solid #14213D;
-  border-radius: 50%;
 }
 
 #search_bar {
@@ -419,10 +435,6 @@ img {
   cursor: pointer;
 }
 
-.not_display {
-  visibility: hidden;
-}
-
 .dark_mode #component {
   background-color: #030303;
   color: #E5E5E5;
@@ -466,4 +478,40 @@ img {
 }
 .dark_mode #search_bar button {
   filter: invert(58%) sepia(97%) saturate(633%) hue-rotate(351deg) brightness(102%) contrast(98%);
+}
+
+@media screen and (max-width: 1140px) {
+  h1 {
+    margin: 40px 0 40px 0;
+  }
+  #body_div {
+    flex-direction: column;
+    align-items: center;
+  }
+  #logo {
+    margin-left: 0;
+  }
+  #component {
+    width: 750px;
+    padding: 25px;
+  }
+  #sticky {
+    align-self: center;
+  }
+}
+@media screen and (max-width: 750px) {
+  h1 {
+    font-size: 24px;
+  }
+  #component {
+    width: 375px;
+  }
+  #search_bar {
+    margin: 0;
+    margin-left: 25px;
+  }
+  #search_bar input {
+    min-width: 335px;
+    padding: 0;
+  }
 }

@@ -25,7 +25,39 @@ body {
     padding: 25px 25px 25px 0;
     box-sizing: border-box;
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+}
+
+#header_div{
+    display: flex;
+    justify-content: space-between;
+}
+
+#logo {
+    margin-left: 25px;
+    border: solid 1px $colorDarkBlue;
+    border-radius: 10px;
+}
+
+//buttons for modals windows settings and infos
+#setting_info {
+    display: flex;
+    column-gap: 5px;
+}
+
+#setting_info img {
+    height: 100%;
+    width: auto;
+    filter: invert(9%) sepia(64%) saturate(983%) hue-rotate(189deg) brightness(97%) contrast(93%); //dark blue
+}
+
+#info_open {
+    text-align: center;
+    font-size: 18px;
+    color: $colorDarkBlue;
+    padding: 0 6px;
+    border: 1.5px solid $colorDarkBlue;
+    border-radius: 50%;
 }
 
 // general typography and settings
@@ -67,11 +99,16 @@ img {
     display: block;
 }
 
+#body_div{
+    display: flex;
+    gap: 20px;
+}
+
 //left part
-#logo {
-    margin-left: 25px;
-    border: solid 1px $colorDarkBlue;
-    border-radius: 10px;
+#left_col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #sticky {
@@ -85,31 +122,6 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    div:nth-child(1) {
-        align-self: flex-end;
-    }
-}
-
-//buttons for modals windows settings and infos
-#setting_info {
-    display: flex;
-    column-gap: 5px;
-}
-
-#setting_info img {
-    height: 100%;
-    width: auto;
-    filter: invert(9%) sepia(64%) saturate(983%) hue-rotate(189deg) brightness(97%) contrast(93%); //dark blue
-}
-
-#info_open {
-    text-align: center;
-    font-size: 20px;
-    color: $colorDarkBlue;
-    padding: 0 7px;
-    border: 1.5px solid $colorDarkBlue;
-    border-radius: 50%;
 }
 
 // Form : search Bar
@@ -165,10 +177,10 @@ img {
     }
 }
 
-.not_display {
-    visibility: hidden;
-}
-
+//TODO: voir si sert vraiment
+// .not_display {
+//     visibility: hidden;
+// }
 
 //dark mode 
 .dark_mode #component {
@@ -217,4 +229,50 @@ img {
     button {
         filter: invert(58%) sepia(97%) saturate(633%) hue-rotate(351deg) brightness(102%) contrast(98%); //sepia
     }
+}
+
+@media screen and (max-width: 1140px) {
+    h1 {
+        margin: 40px 0 40px 0;
+    }
+
+    #body_div{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #logo{
+        margin-left: 0;
+    }
+
+    #component{
+        width: 750px;
+        padding: 25px;
+    }
+
+    #sticky{
+        align-self: center;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    #component{
+        width: 375px;
+    }
+
+    // Form : search Bar
+    #search_bar {
+        margin: 0;
+        margin-left: 25px;
+
+        input {
+            min-width: 335px;
+            padding: 0;
+        }
+    }
+
 }
