@@ -295,7 +295,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  padding: 25px 25px 25px 0;
+  padding: 25px;
   box-sizing: border-box;
 }
 
@@ -310,7 +310,6 @@ header {
 }
 
 #logo {
-  margin-left: 25px;
   border: solid 1px #14213D;
   border-radius: 10px;
 }
@@ -341,7 +340,7 @@ h2 {
 h3 {
   font-size: 16px;
   font-weight: 700;
-  margin: 0;
+  margin: 20px 0;
 }
 
 p {
@@ -361,7 +360,7 @@ a:hover {
 
 main {
   display: flex;
-  gap: 20px;
+  column-gap: 40px;
 }
 
 img {
@@ -384,6 +383,7 @@ img {
 #sticky {
   position: sticky;
   top: 10%;
+  margin-left: -25px;
 }
 
 #right_col {
@@ -394,7 +394,7 @@ img {
 }
 
 #search_bar {
-  margin: 55px 0 65px 0;
+  margin: 55px 0 25px 0;
   display: flex;
   align-items: center;
 }
@@ -439,6 +439,68 @@ img {
 #search_bar button:hover {
   cursor: pointer;
   opacity: 0.6;
+}
+
+#div_resultat {
+  min-width: 750px;
+  padding-right: 30px;
+}
+
+dl {
+  margin: 0;
+}
+
+.panel {
+  border: 1px solid #14213D;
+  border-radius: 10px;
+  padding: 15px 25px;
+  box-sizing: border-box;
+  margin-top: 40px;
+}
+
+.panel.active {
+  border-color: #FCA311;
+}
+
+.opening_panel {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 15px;
+  cursor: pointer;
+}
+
+.opening_panel::after {
+  content: "^"; /*\005E \1431*/
+  transform: rotate(0.5turn);
+  color: #FCA311;
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.opening_panel.active::after {
+  transform: rotate(1turn);
+  margin-bottom: 0;
+  margin-top: 5px;
+}
+
+.opening_panel div {
+  display: flex;
+  column-gap: 15px;
+}
+
+dt.active + dd {
+  height: 100%;
+}
+
+dd {
+  margin: 0;
+  height: 0px;
+  overflow: hidden;
+}
+dd h2 {
+  margin-top: 5px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -499,6 +561,7 @@ img {
   main {
     flex-direction: column;
     align-items: center;
+    row-gap: 40px;
   }
   h1 {
     margin: 40px 0 40px 0;
@@ -515,10 +578,20 @@ img {
     font-style: italic;
     opacity: 0.8;
   }
+  #search_bar {
+    margin-top: 5px;
+  }
+  #div_resultat {
+    padding-right: 0;
+  }
 }
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 850px) {
   h1 {
     font-size: 24px;
+    margin-bottom: 5px;
+  }
+  #sticky {
+    display: none;
   }
   #search_bar {
     margin: 0;
@@ -527,5 +600,12 @@ img {
   #search_bar input {
     min-width: 335px;
     padding: 0;
+  }
+  #div_resultat {
+    min-width: 335px;
+  }
+  .opening_panel > div {
+    flex-direction: column;
+    row-gap: 5px;
   }
 }

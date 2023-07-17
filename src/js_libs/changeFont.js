@@ -1,7 +1,7 @@
 const radioBtns = document.querySelectorAll("input[type=radio]");
 const body = document.querySelector("body");
 const links = document.querySelectorAll("a");
-let fontChoice = body.style.fontFamily;
+let fontChoice = body.getAttribute("style");
 
 if(radioBtns != null) {
     radioBtns.forEach(function(radioBtn){
@@ -36,6 +36,4 @@ if(radioBtns != null) {
             }
         });
     });
-    
-    
 }
