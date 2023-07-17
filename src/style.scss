@@ -2,6 +2,7 @@
 @import "./sass_libs/mixins_variables.scss";
 @import "./sass_libs/modalWindows.scss";
 @import "./sass_libs/tooltips.scss";
+@import "./sass_libs/credits.scss";
 
 :root {
     font-size: 100%;
@@ -9,26 +10,16 @@
 
 body {
     margin: 0;
-}
-
-#container {
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#component {
-    border: solid 0.5px $colorShadowLightTeme;
-    border-radius: 5px;
-    width: 1440px;
     padding: 25px 25px 25px 0;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+    box-sizing: border-box;    
 }
 
-#header_div{
+.light_mode_body{
+    @include theme($theme: $colorBgLightTheme, $txtColor: $colorTxtLightTheme);
+}
+
+header{
     display: flex;
     justify-content: space-between;
 }
@@ -39,25 +30,15 @@ body {
     border-radius: 10px;
 }
 
-//buttons for modals windows settings and infos
-#setting_info {
-    display: flex;
-    column-gap: 5px;
-}
-
-#setting_info img {
-    height: 100%;
+//buttons for modals windows settings
+#logo_setting img {
+    height: 25px;
     width: auto;
     filter: invert(9%) sepia(64%) saturate(983%) hue-rotate(189deg) brightness(97%) contrast(93%); //dark blue
 }
 
-#info_open {
-    text-align: center;
-    font-size: 18px;
-    color: $colorDarkBlue;
-    padding: 0 6px;
-    border: 1.5px solid $colorDarkBlue;
-    border-radius: 50%;
+#logo_setting:hover img{
+    filter: invert(58%) sepia(97%) saturate(633%) hue-rotate(351deg) brightness(102%) contrast(98%); //sepia
 }
 
 // general typography and settings
@@ -95,13 +76,20 @@ a:hover {
     color: $colorSepia;
 }
 
+main{
+    display: flex;
+    gap: 20px;
+}
+
 img {
     display: block;
 }
 
-#body_div{
-    display: flex;
-    gap: 20px;
+#credits_page_link{
+    text-align: center;
+    font-size: 12px;
+    font-style: italic;
+    opacity: 0.8;
 }
 
 //left part
@@ -169,23 +157,23 @@ img {
         background-repeat: no-repeat;
     }
 
-
     input:hover,
     label:hover,
     button:hover {
         cursor: pointer;
+        opacity: 0.6;
     }
 }
 
-//TODO: voir si sert vraiment
-// .not_display {
-//     visibility: hidden;
-// }
-
 //dark mode 
-.dark_mode #component {
+@media (prefers-color-scheme: dark) {
+    body {
+        @include theme($theme: $colorBgDarkTheme, $txtColor: $colorTxtDarkTheme);
+    }
+}
+
+.dark_mode_body {
     @include theme($theme: $colorBgDarkTheme, $txtColor: $colorTxtDarkTheme);
-    border-color: $colorSepia;
 }
 
 .dark_mode #logo {
@@ -196,17 +184,20 @@ img {
     color: $colorTxtDarkTheme;
 }
 
+.dark_mode a:hover {
+    color: $colorSepia;
+}
+
 .dark_mode #sticky {
     filter: invert(100%);
 }
 
-.dark_mode #setting_info img {
+.dark_mode #logo_setting img{
     filter: invert(58%) sepia(97%) saturate(633%) hue-rotate(351deg) brightness(102%) contrast(98%); //sepia
 }
 
-.dark_mode #info_open {
-    color: $colorSepia;
-    border-color: $colorSepia;
+.dark_mode #logo_setting img:hover {
+    opacity: 0.5;
 }
 
 // Form : search Bar
@@ -232,36 +223,38 @@ img {
 }
 
 @media screen and (max-width: 1140px) {
-    h1 {
-        margin: 40px 0 40px 0;
+    body{ 
+        padding: 25px;
     }
 
-    #body_div{
+    main{
         flex-direction: column;
         align-items: center;
+    }
+    
+    h1 {
+        margin: 40px 0 40px 0;
     }
 
     #logo{
         margin-left: 0;
     }
 
-    #component{
-        width: 750px;
-        padding: 25px;
-    }
-
     #sticky{
         align-self: center;
+    }
+
+    #credits_page_link{
+        text-align: center;
+        font-size: 8px;
+        font-style: italic;
+        opacity: 0.8;
     }
 }
 
 @media screen and (max-width: 750px) {
     h1 {
         font-size: 24px;
-    }
-
-    #component{
-        width: 375px;
     }
 
     // Form : search Bar

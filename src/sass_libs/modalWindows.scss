@@ -71,12 +71,10 @@
 }
 
 //modal windows for setting font family and light/dark theme
-#setting_modal_div {
-    h1 {
+#modal_setting_tittle {
         margin: 5px 0 30px 0;
-    }
 
-    h1+div {
+    +div {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -143,22 +141,22 @@
 }
 
 //modal windows About
-#modal_info_txt {
-    h1 {
-        margin: 5px 0 30px 0;
-    }
+// #modal_info_txt {
+//     h1 {
+//         margin: 5px 0 30px 0;
+//     }
 
-    h2 {
-        margin: 20px 0 20px 0;
-        text-align: center;
-    }
+//     h2 {
+//         margin: 20px 0 20px 0;
+//         text-align: center;
+//     }
     
-    p{
-        margin-bottom: 5px;
-    }
-}
+//     p{
+//         margin-bottom: 5px;
+//     }
+// }
 
-//dark mode with toggle button
+//dark mode
 .dark_mode .modal {
     @include theme($theme: $colorBgDarkTheme, $txtColor: $colorTxtDarkTheme);
 }

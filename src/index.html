@@ -37,11 +37,11 @@
     <title>My Dictionary</title>
 </head>
 
-<body style="font-family: Roboto">
+<body style="font-family: Roboto" class="light_mode_body">
     <!-- MODALS WINDOWS FOR SETTINGS -->
     <div class="modal_container setting" role="dialog" aria-labelledby="modal_setting_tittle">
         <div class="overlay"></div>
-        <div class="modal" id="setting_modal_div">
+        <div class="modal" > <!--TODO ASUPPRIMER SI NE SERT PAS id="setting_modal_div"-->
             <button aria-label="close modal" class="close_modal modal_trigger setting">X</button>
             <h1 id="modal_setting_tittle">Settings</h1>
             <div>
@@ -66,81 +66,38 @@
         </div>
     </div>
 
-    <!-- MODALS WINDOWS FOR INFORMATIONS AND PHOTOS CREDITS  -->
-    <div class="modal_container info" role="dialog" aria-labelledby="modal_info_tittle">
-        <div class="overlay"></div>
-        <div id="modal_info_txt" class="modal">
-            <button aria-label="close modal" class="close_modal modal_trigger info">X</button>
-            <h1 id="modal_info_tittle">About</h1>
-            <p>This site was created by Joelle Moureu as part of the web developer training course with Online FormaPro
-                in Lure, session 23-24.</p>
-            <h2>Credits</h2>
-            <p>
-                My Dictionary Logo was produced on:
-                <a href="https://www.freelogodesign.org/" target="_blank"> freelogodesign.org</a>
+    <header>
+        <p>
+            <img id="logo" src="./ressources/images/logo_175x70.webp"
+                alt="Logo My Dictionary book drawing and writting color sepia and dark blue" width="175" height="70">
+        </p>
+        <p id="logo_setting" class="modal_trigger modal_btn setting">
+            <img src="./ressources/images/icon_setting_25x25.webp" alt="Gearwheel for go on setting window" width="16"
+                height="16">
+        </p>
+    </header>
+    <main>
+        <div id="left_col"> <!--left_col-->
+            <h1>Definitions,<br>phonetics and synonyms</h1>
+            <p id="sticky">
+                <img srcset="./ressources/images/image_fond_300x300.webp 300w, ./ressources/images/image_fond_600x600.webp 600w"
+                    sizes="(max-width: 1140px) 300px, 600px" src="./ressources/images/image_fond_600x600.webp"
+                    alt="hand-drawn sketch, illustration of a hand holding a stack of books on which a cross-legged little boy is studying.">
+                <p id="credits_page_link"><a href="./credits.html" target="_blank">Icons and photos credits</a></p>
             </p>
-            <p>
-                Dictionary of icons created by Robert Angle:
-                <a href="https://www.flaticon.com/fr/icones-gratuites/dictionnaire" title="dictionnaire icônes">
-                    Flaticon</a>
-            </p>
-            <p>
-                <a target="_blank" href="https://icons8.com/icon/364/param%C3%A8tres">Gear wheel</a> icon by:
-                <a target="_blank" href="https://icons8.com"> Icons8</a>
-            </p>
-            <p>
-                Illustration designed by
-                <a href="https://www.freepik.com" target="_blank">Freepik</a>
-            </p>
-        </div>
-    </div>
-
-    <!-- COMPONENT -->
-    <div id="container">
-        <div id="component">
-            <div id="header_div">
-                <p>
-                    <img id="logo" src="./ressources/images/logo_175x70.webp"
-                        alt="Logo My Dictionary book drawing and writting color sepia and dark blue" width="175"
-                        height="70">
-                </p>
-                <div id="setting_info">
-                    <div class="tooltip_container">
-                        <p class="modal_trigger modal_btn setting">
-                            <img src="./ressources/images/icon_setting_25x25.webp"
-                                alt="Gearwheel for go on setting window" width="16" height="16">
-                        </p>
-                        <span class="tooltip_content">Settings</span>
-                    </div>
-                    <div class="tooltip_container">
-                        <p id="info_open" class="modal_trigger modal_btn info">?</p>
-                        <span class="tooltip_content">About</span>
-                    </div>
+        </div> <!-- END left_col-->
+        <div id="right_col">
+            <form name="search_bar" id="search_bar" novalidate>
+                <div class="tooltip_container">
+                    <input type="text" id="search_zone" name="search_zone" data-error="Can't be blank !"
+                        placeholder="Search in My Dictionary ..." required>
+                    <label for="search_zone" class="tooltip_content">Search zone</label>
                 </div>
-            </div>
-            <div id="body_div">
-                <div id="left_col"> <!--left_col-->
-                    <h1>Definitions,<br>phonetics and synonyms</h1>
-                    <p id="sticky">
-                        <img srcset="./ressources/images/image_fond_300x300.webp 300w, ./ressources/images/image_fond_600x600.webp 600w"
-                            sizes="(max-width: 1140px) 300px, 600px" src="./ressources/images/image_fond_600x600.webp"
-                            alt="hand-drawn sketch, illustration of a hand holding a stack of books on which a cross-legged little boy is studying.">
-                    </p>
-                </div> <!-- END left_col-->
-                <div id="right_col">
-                    <form name="search_bar" id="search_bar" novalidate>
-                        <div class="tooltip_container">
-                            <input type="text" id="search_zone" name="search_zone" data-error="Can't be blank !"
-                                placeholder="Search in My Dictionary ..." required>
-                            <label for="search_zone" class="tooltip_content">Search zone</label>
-                        </div>
-                        <button type="submit" id="submit"></button>
-                    </form>
-                    <div id="resultat"></div>
-                </div>
-            </div>
+                <button type="submit" id="submit"></button>
+            </form>
+            <div id="resultat"></div>
         </div>
-    </div>
+    </main>
 </body>
 
 </html>

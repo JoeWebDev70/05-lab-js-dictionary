@@ -123,10 +123,10 @@
   cursor: pointer;
 }
 
-#setting_modal_div h1 {
+#modal_setting_tittle {
   margin: 5px 0 30px 0;
 }
-#setting_modal_div h1 + div {
+#modal_setting_tittle + div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -192,22 +192,9 @@
   box-shadow: 0px 5px 5px 0px rgba(229, 229, 229, 0.25);
 }
 
-#modal_info_txt h1 {
-  margin: 5px 0 30px 0;
-}
-#modal_info_txt h2 {
-  margin: 20px 0 20px 0;
-  text-align: center;
-}
-#modal_info_txt p {
-  margin-bottom: 5px;
-}
-
 .dark_mode .modal {
   background-color: #030303;
   color: #E5E5E5;
-  border: solid 0.5px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
 }
 
 .dark_mode #toggle_div {
@@ -271,32 +258,53 @@
   opacity: 1;
 }
 
-:root {
-  font-size: 100%;
-}
-
-body {
-  margin: 0;
-}
-
-#container {
+#container_credits {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#component {
-  border: solid 0.5px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-  width: 1440px;
-  padding: 25px 25px 25px 0;
+#component_credits {
+  width: 600px;
+  padding: 25px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
+#component_credits h1 {
+  margin: 5px 0 30px 0;
+}
+#component_credits h2 {
+  margin: 25px 0 30px 0;
+  text-align: center;
+}
+#component_credits p {
+  margin-bottom: 5px;
+}
 
-#header_div {
+.dark_mode_credit_page {
+  background-color: #030303;
+  color: #E5E5E5;
+}
+
+:root {
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 25px 25px 25px 0;
+  box-sizing: border-box;
+}
+
+.light_mode_body {
+  background-color: #FCFCFC;
+  color: #232323;
+}
+
+header {
   display: flex;
   justify-content: space-between;
 }
@@ -307,24 +315,14 @@ body {
   border-radius: 10px;
 }
 
-#setting_info {
-  display: flex;
-  column-gap: 5px;
-}
-
-#setting_info img {
-  height: 100%;
+#logo_setting img {
+  height: 25px;
   width: auto;
   filter: invert(9%) sepia(64%) saturate(983%) hue-rotate(189deg) brightness(97%) contrast(93%);
 }
 
-#info_open {
-  text-align: center;
-  font-size: 18px;
-  color: #14213D;
-  padding: 0 6px;
-  border: 1.5px solid #14213D;
-  border-radius: 50%;
+#logo_setting:hover img {
+  filter: invert(58%) sepia(97%) saturate(633%) hue-rotate(351deg) brightness(102%) contrast(98%);
 }
 
 h1 {
@@ -361,13 +359,20 @@ a:hover {
   color: #FCA311;
 }
 
+main {
+  display: flex;
+  gap: 20px;
+}
+
 img {
   display: block;
 }
 
-#body_div {
-  display: flex;
-  gap: 20px;
+#credits_page_link {
+  text-align: center;
+  font-size: 12px;
+  font-style: italic;
+  opacity: 0.8;
 }
 
 #left_col {
@@ -433,14 +438,18 @@ img {
 #search_bar label:hover,
 #search_bar button:hover {
   cursor: pointer;
+  opacity: 0.6;
 }
 
-.dark_mode #component {
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #030303;
+    color: #E5E5E5;
+  }
+}
+.dark_mode_body {
   background-color: #030303;
   color: #E5E5E5;
-  border: solid 0.5px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-  border-color: #FCA311;
 }
 
 .dark_mode #logo {
@@ -451,17 +460,20 @@ img {
   color: #E5E5E5;
 }
 
+.dark_mode a:hover {
+  color: #FCA311;
+}
+
 .dark_mode #sticky {
   filter: invert(100%);
 }
 
-.dark_mode #setting_info img {
+.dark_mode #logo_setting img {
   filter: invert(58%) sepia(97%) saturate(633%) hue-rotate(351deg) brightness(102%) contrast(98%);
 }
 
-.dark_mode #info_open {
-  color: #FCA311;
-  border-color: #FCA311;
+.dark_mode #logo_setting img:hover {
+  opacity: 0.5;
 }
 
 .dark_mode #search_bar input {
@@ -481,30 +493,32 @@ img {
 }
 
 @media screen and (max-width: 1140px) {
-  h1 {
-    margin: 40px 0 40px 0;
+  body {
+    padding: 25px;
   }
-  #body_div {
+  main {
     flex-direction: column;
     align-items: center;
+  }
+  h1 {
+    margin: 40px 0 40px 0;
   }
   #logo {
     margin-left: 0;
   }
-  #component {
-    width: 750px;
-    padding: 25px;
-  }
   #sticky {
     align-self: center;
+  }
+  #credits_page_link {
+    text-align: center;
+    font-size: 8px;
+    font-style: italic;
+    opacity: 0.8;
   }
 }
 @media screen and (max-width: 750px) {
   h1 {
     font-size: 24px;
-  }
-  #component {
-    width: 375px;
   }
   #search_bar {
     margin: 0;

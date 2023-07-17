@@ -67,11 +67,15 @@ const config = {
         new HtmlWebpackPlugin({
             inject : true,
             minify : true,
-            meta: {
-                viewport : 'width=device-width, initial-scale=1, shrink-to-fit=no',
-                description : 'Ceci est une page pour webpack'
-            },
-            template: "./src/index.html"
+            template: "./src/index.html",
+            filename: "index.html",
+            
+        }),
+        new HtmlWebpackPlugin({
+            inject : true,
+            minify : true,
+            template: "./src/credits.html",
+            filename: "credits.html",
         }),
         new MiniCssExtractPlugin({
             filename: "style.css",

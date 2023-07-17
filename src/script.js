@@ -1,21 +1,24 @@
 import "./style.scss";
 import "./js_libs/modalWindows.js";
-import "./js_libs/changeFont";
-import "./js_libs/toggle";
+import "./js_libs/changeFont.js";
+import "./js_libs/toggle.js";
+import "./js_libs/credits_theme.js";
+import "./js_libs/credits_fonts.js";
 
 const searchBar = document.querySelector("#search_bar");
 const searchZone = document.querySelector("#search_zone");
 
-searchBar.addEventListener('submit', function(e) {
-    if(!this.checkValidity()){
-        e.preventDefault();
-        this.classList.add('not_valid');
-        if(!searchZone.valid){
-            searchZone.placeholder = searchZone.dataset.error;
+if(searchBar != null) {
+    searchBar.addEventListener('submit', function(e) {
+        if(!this.checkValidity()){
+            e.preventDefault();
+            this.classList.add('not_valid');
+            if(!searchZone.valid){
+                searchZone.placeholder = searchZone.dataset.error;
+            }
         }
-    }
-});
-
+    });
+}
 // const btn = document.querySelector("button");
 // btn.addEventListener("click", function(){
 //     search();

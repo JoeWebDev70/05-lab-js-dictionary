@@ -12,8 +12,6 @@ $colorError: #FC0000;
 @mixin theme($theme: $colorBgLightTheme, $txtColor: $colorTxtLightTheme, $borderColor: $colorShadowLightTeme){
     background-color: $theme;
     color: $txtColor;
-    border: solid 0.5px $borderColor; 
-    border-radius: 10px;
 }
 
 @mixin Appearance($howAppear){

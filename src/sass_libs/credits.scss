@@ -1,0 +1,31 @@
+#container_credits{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#component_credits {
+    width: 600px;
+    padding: 25px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+        margin: 5px 0 30px 0;
+    }
+
+    h2 {
+        margin: 25px 0 30px 0;
+        text-align: center;
+    }
+
+    p {
+        margin-bottom: 5px;
+    }
+}
+
+.dark_mode_credit_page {
+    @include theme($theme: $colorBgDarkTheme, $txtColor: $colorTxtDarkTheme);
+}
