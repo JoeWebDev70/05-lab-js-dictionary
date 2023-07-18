@@ -503,6 +503,16 @@ dd h2 {
   margin-top: 5px;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
+.not_found {
+  border: none;
+  color: #FC0000;
+  text-align: center;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #030303;

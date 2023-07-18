@@ -229,6 +229,16 @@ dd{
     }
 }
 
+.hidden{
+    visibility: hidden;
+}
+
+.not_found{
+    border: none;
+    color: $colorError;
+    text-align: center;
+}
+
 //dark mode 
 @media (prefers-color-scheme: dark) {
     body {
