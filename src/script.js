@@ -5,40 +5,65 @@ import "./js_libs/toggle.js";
 import "./js_libs/creditsTheme.js";
 import "./js_libs/creditsFonts.js";
 
-const searchBar = document.querySelector("#search_bar");
-const searchZone = document.querySelector("#search_zone");
-const questions = document.querySelectorAll("dt");
-
+const searchBarForm = document.querySelector("#search_bar");
+const searchZoneInput = document.querySelector("#search_zone");
+let questions; //div "panel" for open and close panel : get in displayResult function before clone template
 const resultZone = document.querySelector("#div_resultat dl");
+let nodeToErase; //to count nodes created by displayResult or displayError
+const btnEraseInputValue = document.querySelector("#erase_data");
+let audioDisplay; //to display audio on click
+let btnAudioClicked = false;
 
-// const btn = document.querySelector("button");
-// btn.addEventListener("click", function(e){
-//     e.preventDefault();
-//     search();
-// });
 
-if (searchBar != null) {
-    searchBar.addEventListener('submit', function (e) {
+//add event listener on seach bar and its items
+if (searchBarForm != null) {
+    // verification of form validity
+    searchBarForm.addEventListener('submit', function (e) {
         if (!this.checkValidity()) {
             e.preventDefault();
             this.classList.add('not_valid');
-            if (!searchZone.valid) {
-                searchZone.placeholder = searchZone.dataset.error;
+            if (!searchZoneInput.valid) {
+                eraseResultOrError(nodeToErase);
+                searchZoneInput.placeholder = searchZoneInput.dataset.error;
             }
         } else {
+            eraseResultOrError(nodeToErase);
             search(e);
         }
+        
+    });
+
+    // show or hide icon to erase data in input on new focus
+    searchZoneInput.addEventListener('focus', function(){
+        if(searchZoneInput.value != ""){
+            btnEraseInputValue.classList.add("show_item");
+        }else{
+            btnEraseInputValue.classList.remove("show_item");
+        }        
+    });
+
+    // show or hide icon to erase data in input on change
+    searchZoneInput.addEventListener('change', function(){
+        if(searchZoneInput.value != ""){
+            btnEraseInputValue.classList.add("show_item");
+        }else{
+            btnEraseInputValue.classList.remove("show_item");
+        }        
+    });
+
+    // erase data in input for new research on click icon
+    btnEraseInputValue.addEventListener('click', function(){
+        searchZoneInput.value = "";
+        btnEraseInputValue.classList.remove("show_item");
     });
 }
 
-
-
+// search word in API and collect data in new array
 function search(evt) {
     evt.preventDefault();
-    let searchingWord = searchZone.value;
+    let searchingWord = searchZoneInput.value;
     let resultArray = new Array();
     
-
     if (searchingWord.length != 0) {
         let url = "https://api.dictionaryapi.dev/api/v2/entries/en/" + searchingWord;
 
@@ -46,28 +71,26 @@ function search(evt) {
             fetch(url).then(function (response) {
                 if (response.ok) {
                     response.json().then(function (data) {
-                        console.log("complete data : ",data);
                         try {
-                            let monObjet = {
-                                objAudio: "",
-                                objWord: "",
-                                objGender:"",
-                                objPhonetic: "",
-                                objDefinitions: "",
-                                objSynonyms: "",
-                            }
-                            let resultDefinitions = "";
-                            let resultSynonyms = "";
                             for (let i = 0; i < data.length; i++) {
+                                let monObjet = {
+                                    objAudio: "",
+                                    objWord: "",
+                                    objGender:"",
+                                    objPhonetic: "",
+                                    objDefinitions: "",
+                                    objSynonyms: "",
+                                }
+                                let resultDefinitions = "";
+                                let resultSynonyms = "";
+                                
                                 // word
                                 if (data[i].word != null) {
-                                    // console.log("i : ", i, " word : ", data[i].word);
                                     monObjet.objWord = data[i].word;
                                 }
 
                                 // phonetic
                                 if (data[i].phonetic != null) {
-                                    // console.log("i : ", i, " phonetic : ", data[i].phonetic);
                                     monObjet.objPhonetic = data[i].phonetic;
                                 }
 
@@ -87,39 +110,35 @@ function search(evt) {
                                 for (let j = 0; j < data[i].meanings.length; j++) {
                                     // gender
                                     if (data[i].meanings[j].partOfSpeech != null) {
-                                        // console.log("i : ", i, " j : ", j, " gender : ", data[i].meanings[j].partOfSpeech);
                                         monObjet.objGender = data[i].meanings[j].partOfSpeech;
                                     }
-                                //     // definitions
-                                //     for (let k = 0; k < data[i].meanings[j].definitions.length; k++) {
-                                //         if (data[i].meanings[j].definitions[k].definition != null) {
-                                //             console.log("i : ", i, " j : ", j, " k : ", k, " definitions : ", data[i].meanings[j].definitions[k].definition);
-                                //             // resultDefinitions = resultDefinitions + '\n' + data[i].meanings[j].definitions[k].definition;
-                                //             // console.log(resultDefinitions);
-                                //             // monObjet.definitions = resultDefinitions;
-                                //         }
-                                //     }
-                                //     // synonyms
-                                //     for (let l = 0; l < data[i].meanings[j].synonyms.length; l++) {
-                                //         if (data[i].meanings[j].synonyms[l] != null) {
-                                //             console.log("i : ", i, " j : ", j, " l : ", l, " synonyms : ", data[i].meanings[j].synonyms[l]);
-                                //             // resultSynonyms = resultSynonyms + '\n' + data[i].meanings[j].synonyms[l];
-                                //             // console.log(resultSynonyms);
-                                //             // monObjet.synonyms = resultSynonyms;
-                                //         }
-                                //     }
+                                    // definitions
+                                    for (let k = 0; k < data[i].meanings[j].definitions.length; k++) {
+                                        if (data[i].meanings[j].definitions[k].definition != null) {
+                                            if(resultDefinitions == ""){
+                                                resultDefinitions = data[i].meanings[j].definitions[k].definition;
+                                            }else{
+                                                resultDefinitions = resultDefinitions + "/" + data[i].meanings[j].definitions[k].definition;
+                                            }
+                                        }
+                                    }
+                                    monObjet.objDefinitions = resultDefinitions;
 
+                                    // synonyms
+                                    for (let l = 0; l < data[i].meanings[j].synonyms.length; l++) {
+                                        if (data[i].meanings[j].synonyms[l] != null) {
+                                            if(resultSynonyms == ""){
+                                                resultSynonyms = data[i].meanings[j].synonyms[l];
+                                            }else{
+                                                resultSynonyms = resultSynonyms + '/' + data[i].meanings[j].synonyms[l];
+                                            } 
+                                        }
+                                    }
+                                    monObjet.objSynonyms = resultSynonyms;
                                 }
-                                console.log("mon objet : ",monObjet);
-                                // resultArray.push(monObjet);
-                                // console.log("resultArray : ",resultArray);
-                                monObjet.objAudio = "";
-                                monObjet.objWord = "";
-                                monObjet.objGender = "";
-                                monObjet.objPhonetic = "";
-                                monObjet.objDefinitions = "";
-                                monObjet.objSynonyms = "";
+                                resultArray.push(monObjet);
                             }
+                            displayResult(resultArray);
                         } catch (err) {
                             displayError();
                         }
@@ -128,7 +147,6 @@ function search(evt) {
                 } else {
                     displayError();
                 }
-
             });
         } else {
             displayError();
@@ -136,52 +154,126 @@ function search(evt) {
     }
 }
 
+// display content error when word is not found
 function displayError() {
     let notFound = "Definition not found! please enter an other word!"
     if ("content" in document.createElement("template")) {
         let temp = document.querySelector("#temp_panel");
-        let clone = document.importNode(temp.content, true);
+        let clone = temp.content.cloneNode(true);
         let dt = clone.querySelector("dt");
         let div = clone.querySelector(".panel");
+        
         dt.textContent = notFound;
         dt.classList.add("not_found");
         div.classList.add("not_found");
         resultZone.appendChild(clone);
     }
+    nodeToErase = resultZone.childNodes;
 }
 
-function displayResult(){
-  
+// display content when word is found
+function displayResult(dataToDisplay) {
+    
+    let h3Definitions = "Definitions:";
+    let h3Synonyms = "Synonyms:";
+    if ("content" in document.createElement("template")) {
+        for (let i = 0; i < dataToDisplay.length; i++) {
+            let temp = document.querySelector("#temp_panel");
+            let clone = temp.content.cloneNode(true);
 
-    // if("content" in document.createElement("template")){
-    //     let temp = document.querySelector("#temp_panel");
-    //     const resultZone = document.querySelector("#div_resultat dl");
-    //     let clone = document.importNode(temp.content, true);
+            let divs = clone.querySelectorAll("div");
+            let dt = clone.querySelector("dt");
+            let dd = clone.querySelector("dd");
+            let h2 = clone.querySelector("h2");
+            let h3s = clone.querySelectorAll("h3");
+            let ps = clone.querySelectorAll("p");
 
-    //     let dts = clone.querySelectorAll("dt");
-    //     let dds = clone.querySelectorAll("dd");
-    //     let divs = clone.querySelectorAll("div");
-    //     let a = clone.querySelector("a");
-    //     let h2 = clone.querySelector("h2");
-    //     let h3s = clone.querySelectorAll("h3");
-    //     let ps = clone.querySelectorAll("p");
+            divs[0].appendChild(dt);
+            dt.appendChild(divs[1]);
+            divs[1].appendChild(divs[2]);
+            divs[2].appendChild(divs[3]);
+            if(dataToDisplay[i].objAudio != ""){
+                divs[3].appendChild(ps[0]);
+                ps[0].classList.remove("not_display_item");
+            }
+            h2.textContent = dataToDisplay[i].objWord;
+            divs[3].appendChild(h2);
 
-    //     dts[0].textContent = notFound;
-    //     dts[0].classList.add("not_found");
-    //     divs[0].classList.add("not_found");
-    //     resultZone.appendChild(clone);            
-    // }
-}
+            divs[2].appendChild(divs[4]);
+            ps[1].textContent = dataToDisplay[i].objGender;
+            divs[4].appendChild(ps[1]);
+            ps[2].textContent = dataToDisplay[i].objPhonetic;
+            divs[4].appendChild(ps[2]);
 
-//open or close panel
-questions.forEach(question => {
-    question.addEventListener("click", function () {
-        const elementHasActive = document.querySelector(".active");
-        // check if element is found and if the founded element isn't clicked now
-        if (elementHasActive && this !== elementHasActive) {
-            elementHasActive.classList.remove("active");
+            divs[0].appendChild(dd);
+            h3s[0].textContent = h3Definitions;
+            dd.appendChild(h3s[0]);
+            ps[3].textContent = dataToDisplay[i].objDefinitions;
+            dd.appendChild(ps[3]);
+            h3s[1].textContent = h3Synonyms;
+            dd.appendChild(h3s[1]);
+            ps[4].textContent = dataToDisplay[i].objSynonyms;
+            dd.appendChild(ps[4]);
+
+            resultZone.appendChild(clone);
         }
-        //click twice => close
-        this.classList.toggle("active");
+    }
+    
+    audioDisplay = document.querySelectorAll(".audio_display");
+    displayAudio(audioDisplay);
+    questions = document.querySelectorAll(".panel");
+    openClose(questions);
+    nodeToErase = resultZone.childNodes;
+}
+
+function eraseResultOrError(nodes){
+    if(nodes != null && nodes.length > 1){
+        for(let i = nodes.length-1 ; i > 0  ; i--){
+            resultZone.removeChild(nodes[i]);
+        }
+    }    
+}
+
+
+//TODO : enlever le open close du panel au clic sur l'icone audio
+function displayAudio(items){
+    items.forEach(function(item){
+        item.addEventListener("click", function(){
+            btnAudioClicked = true;
+            // console.log("item active ", item);
+        });
     });
-});
+}
+
+//open or close panels of results
+function openClose(items){
+
+        items.forEach(function(item){
+            
+            console.log("openClose : ", btnAudioClicked);
+            item.addEventListener("click", function () {
+                if(!btnAudioClicked){
+                console.log("openClose  in : ", btnAudioClicked);
+                
+                    const elementHasActive = document.querySelector(".active");
+                    // check if element is found and if the founded element isn't clicked now
+                    if (elementHasActive && this !== elementHasActive) {
+                        elementHasActive.classList.remove("active");
+                        elementHasActive.childNodes[0].classList.remove("active");
+                        elementHasActive.childNodes[0].childNodes[0].classList.remove("active");
+                    }
+                    //click twice => close
+
+                        this.classList.toggle("active");
+                        this.childNodes[0].classList.toggle("active");
+                        this.childNodes[0].childNodes[0].classList.toggle("active");
+                
+                } 
+                btnAudioClicked = false;  
+            });
+        
+        });
+        
+    
+}
+

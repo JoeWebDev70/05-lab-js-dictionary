@@ -39,12 +39,12 @@
 
 <body style="font-family: Roboto" class="light_mode_body">
     <!-- MODALS WINDOWS FOR SETTINGS -->
-    <div class="modal_container setting" role="dialog" aria-labelledby="modal_setting_tittle">
+    <div class="modal_container" role="dialog" aria-labelledby="modal_setting_tittle" aria-describedby="modal_setting_content">
         <div class="overlay"></div>
-        <div class="modal" > <!--TODO ASUPPRIMER SI NE SERT PAS id="setting_modal_div"-->
-            <button aria-label="close modal" class="close_modal modal_trigger setting">X</button>
+        <div class="modal" >
+            <button aria-label="close modal" class="close_modal modal_trigger">X</button>
             <h1 id="modal_setting_tittle">Settings</h1>
-            <div>
+            <div id="modal_setting_content">
                 <div id="font_choice">
                     <div>
                         <input type="radio" id="sans_serif" name="font" class="radio_checked" value="Roboto" checked>
@@ -77,22 +77,23 @@
         </p>
     </header>
     <main>
-        <div id="left_col"> <!--left_col-->
+        <div id="left_col"> <!--left_col : title and image -->
             <h1>Definitions,<br>phonetics and synonyms</h1>
             <p id="sticky">
                 <img srcset="./ressources/images/image_fond_300x300.webp 300w, ./ressources/images/image_fond_600x600.webp 600w"
                     sizes="(max-width: 1140px) 300px, 600px" src="./ressources/images/image_fond_600x600.webp"
                     alt="hand-drawn sketch, illustration of a hand holding a stack of books on which a cross-legged little boy is studying.">
-                <p id="credits_page_link"><a href="./credits.html" target="_blank">Icons and photos credits</a></p>
+                <p id="credits_page_link"><a href="./credits.html" target="_blank">Credits and legal mentions</a></p>
             </p>
         </div> <!-- END left_col-->
-        <div id="right_col">
+        <div id="right_col"> <!-- search bar and result of research -->
             <form name="search_bar" id="search_bar" novalidate>
                 <div class="tooltip_container">
                     <input type="text" id="search_zone" name="search_zone" data-error="Can't be blank !"
                         placeholder="Search in My Dictionary ..." required>
                     <label for="search_zone" class="tooltip_content">Search zone</label>
                 </div>
+                <button type="button" id="erase_data" class="hide_item">X</button>
                 <button type="submit" id="submit"></button>
             </form>
             <div id="div_resultat">
@@ -103,7 +104,7 @@
                                 <div class="opening_panel">
                                     <div>
                                         <div>
-                                            <a href="">&#128362;</a>
+                                            <p class="audio_display not_display_item">&#128362</p>
                                             <h2></h2>
                                         </div>
                                         <div>
@@ -114,9 +115,9 @@
                                 </div>
                             </dt> 
                             <dd>
-                                <h3>Definitions:</h3>
+                                <h3></h3>
                                 <p></p>
-                                <h3>Synonyms:</h3>
+                                <h3></h3>
                                 <p></p>
                             </dd>
                         </div>

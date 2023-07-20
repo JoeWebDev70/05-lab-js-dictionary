@@ -3,6 +3,7 @@
     visibility: hidden;
     position: fixed;
     top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
     transition: visibility 0.4s;
@@ -139,22 +140,6 @@
     background-color: $colorDarkBlue;
     box-shadow: 0px 5px 5px 0px $colorShadowDarkTeme;
 }
-
-//modal windows About
-// #modal_info_txt {
-//     h1 {
-//         margin: 5px 0 30px 0;
-//     }
-
-//     h2 {
-//         margin: 20px 0 20px 0;
-//         text-align: center;
-//     }
-    
-//     p{
-//         margin-bottom: 5px;
-//     }
-// }
 
 //dark mode
 .dark_mode .modal {
