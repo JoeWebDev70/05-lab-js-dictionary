@@ -19,7 +19,7 @@
     <!-- preload image-->
     <link rel="preload" as="image" href="./ressources/images/image_fond_600x600.webp"
         imagesrcset="./ressources/images/image_fond_600x600.webp 600w, ./ressources/images/image_fond_300x300.webp 300w"
-        imagesizes="(max-width: 1140px) 300px, 600px" />
+        imagesizes="(max-width: 1140px) 300px, 600px">
     <!-- favicon + preload-->
     <link rel="preload" as="image" href="./ressources/images/favicon_16x16.webp" onload="this.rel='shortcut icon'">
     <noscript>
@@ -39,9 +39,10 @@
 
 <body style="font-family: Roboto" class="light_mode_body">
     <!-- MODALS WINDOWS FOR SETTINGS -->
-    <div class="modal_container" role="dialog" aria-labelledby="modal_setting_tittle" aria-describedby="modal_setting_content">
+    <div class="modal_container" role="dialog" aria-labelledby="modal_setting_tittle"
+        aria-describedby="modal_setting_content">
         <div class="overlay"></div>
-        <div class="modal" >
+        <div class="modal">
             <button aria-label="close modal" class="close_modal modal_trigger">X</button>
             <h1 id="modal_setting_tittle">Settings</h1>
             <div id="modal_setting_content">
@@ -83,8 +84,8 @@
                 <img srcset="./ressources/images/image_fond_300x300.webp 300w, ./ressources/images/image_fond_600x600.webp 600w"
                     sizes="(max-width: 1140px) 300px, 600px" src="./ressources/images/image_fond_600x600.webp"
                     alt="hand-drawn sketch, illustration of a hand holding a stack of books on which a cross-legged little boy is studying.">
-                <p id="credits_page_link"><a href="./credits.html" target="_blank">Credits and legal mentions</a></p>
             </p>
+            <p id="credits_page_link"><a href="./credits.html" target="_blank">Credits and legal mentions</a></p>
         </div> <!-- END left_col-->
         <div id="right_col"> <!-- search bar and result of research -->
             <form name="search_bar" id="search_bar" novalidate>
@@ -104,7 +105,10 @@
                                 <div class="opening_panel">
                                     <div>
                                         <div>
-                                            <p class="audio_display not_display_item">&#128362</p>
+                                            <p class="audio_display not_display_item">
+                                                &#128362;
+                                                <audio controls preload="metadata" class="not_display_item"></audio>
+                                            </p>
                                             <h2></h2>
                                         </div>
                                         <div>
@@ -113,12 +117,12 @@
                                         </div>
                                     </div>
                                 </div>
-                            </dt> 
+                            </dt>
                             <dd>
                                 <h3></h3>
-                                <p></p>
+                                <ul></ul>
                                 <h3></h3>
-                                <p></p>
+                                <ul></ul>
                             </dd>
                         </div>
                     </template>

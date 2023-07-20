@@ -245,6 +245,12 @@ dd{
     h2{
         margin-top: 5px;
     }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
 }
 
 .audio_display:hover{
@@ -268,6 +274,10 @@ dd{
     border: none;
     color: $colorError;
     text-align: center;
+}
+
+.on_error_audio{
+    color: $colorError;
 }
 
 //dark mode 

@@ -520,6 +520,11 @@ dd {
 dd h2 {
   margin-top: 5px;
 }
+dd ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
 
 .audio_display:hover {
   cursor: pointer;
@@ -542,6 +547,10 @@ dd h2 {
   border: none;
   color: #FC0000;
   text-align: center;
+}
+
+.on_error_audio {
+  color: #FC0000;
 }
 
 @media (prefers-color-scheme: dark) {

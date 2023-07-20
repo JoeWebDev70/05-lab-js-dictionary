@@ -12,6 +12,7 @@ const resultZone = document.querySelector("#div_resultat dl");
 let nodeToErase; //to count nodes created by displayResult or displayError
 const btnEraseInputValue = document.querySelector("#erase_data");
 let audioDisplay; //to display audio on click
+// let srcAudio; // to get src audio
 let btnAudioClicked = false;
 
 
@@ -66,7 +67,7 @@ function search(evt) {
     
     if (searchingWord.length != 0) {
         let url = "https://api.dictionaryapi.dev/api/v2/entries/en/" + searchingWord;
-
+        // search word not single letter
         if (searchingWord.length > 1) {
             fetch(url).then(function (response) {
                 if (response.ok) {
@@ -116,7 +117,7 @@ function search(evt) {
                                     for (let k = 0; k < data[i].meanings[j].definitions.length; k++) {
                                         if (data[i].meanings[j].definitions[k].definition != null) {
                                             if(resultDefinitions == ""){
-                                                resultDefinitions = data[i].meanings[j].definitions[k].definition;
+                                                resultDefinitions = (data[i].meanings[j].definitions[k].definition);
                                             }else{
                                                 resultDefinitions = resultDefinitions + "/" + data[i].meanings[j].definitions[k].definition;
                                             }
@@ -187,6 +188,9 @@ function displayResult(dataToDisplay) {
             let h2 = clone.querySelector("h2");
             let h3s = clone.querySelectorAll("h3");
             let ps = clone.querySelectorAll("p");
+            let uls = clone.querySelectorAll("ul");
+            let lis =  clone.querySelectorAll("li");
+            let audio = clone.querySelector("audio");
 
             divs[0].appendChild(dt);
             dt.appendChild(divs[1]);
@@ -195,6 +199,7 @@ function displayResult(dataToDisplay) {
             if(dataToDisplay[i].objAudio != ""){
                 divs[3].appendChild(ps[0]);
                 ps[0].classList.remove("not_display_item");
+                audio.setAttribute('src', dataToDisplay[i].objAudio);
             }
             h2.textContent = dataToDisplay[i].objWord;
             divs[3].appendChild(h2);
@@ -208,12 +213,22 @@ function displayResult(dataToDisplay) {
             divs[0].appendChild(dd);
             h3s[0].textContent = h3Definitions;
             dd.appendChild(h3s[0]);
-            ps[3].textContent = dataToDisplay[i].objDefinitions;
-            dd.appendChild(ps[3]);
+            let tempContentDef = dataToDisplay[i].objDefinitions.split('/');
+            for(let k = 0; k < tempContentDef.length; k++){
+                let tmpli = document.createElement("li");
+                tmpli.innerHTML += tempContentDef[k] + '<br>';
+                uls[0].appendChild(tmpli);
+            }
+            dd.appendChild(uls[0]);
             h3s[1].textContent = h3Synonyms;
             dd.appendChild(h3s[1]);
-            ps[4].textContent = dataToDisplay[i].objSynonyms;
-            dd.appendChild(ps[4]);
+            let tempContentSyn = dataToDisplay[i].objSynonyms.split('/');
+            for(let l = 0; l < tempContentSyn.length; l++){
+                let tmpli = document.createElement("li");
+                tmpli.innerHTML += tempContentSyn[l] + '<br>';
+                uls[1].appendChild(tmpli);
+            }
+            dd.appendChild(uls[1]);
 
             resultZone.appendChild(clone);
         }
@@ -234,46 +249,35 @@ function eraseResultOrError(nodes){
     }    
 }
 
-
-//TODO : enlever le open close du panel au clic sur l'icone audio
 function displayAudio(items){
     items.forEach(function(item){
         item.addEventListener("click", function(){
             btnAudioClicked = true;
-            // console.log("item active ", item);
+            this.childNodes[1].play();
+            console.log(this.childNodes);
         });
     });
 }
 
 //open or close panels of results
-function openClose(items){
-
-        items.forEach(function(item){
-            
-            console.log("openClose : ", btnAudioClicked);
-            item.addEventListener("click", function () {
-                if(!btnAudioClicked){
-                console.log("openClose  in : ", btnAudioClicked);
-                
-                    const elementHasActive = document.querySelector(".active");
-                    // check if element is found and if the founded element isn't clicked now
-                    if (elementHasActive && this !== elementHasActive) {
-                        elementHasActive.classList.remove("active");
-                        elementHasActive.childNodes[0].classList.remove("active");
-                        elementHasActive.childNodes[0].childNodes[0].classList.remove("active");
-                    }
-                    //click twice => close
-
-                        this.classList.toggle("active");
-                        this.childNodes[0].classList.toggle("active");
-                        this.childNodes[0].childNodes[0].classList.toggle("active");
-                
-                } 
-                btnAudioClicked = false;  
-            });
-        
+function openClose(items) {
+    items.forEach(function (item) {
+        item.addEventListener("click", function () {
+            if (!btnAudioClicked) {
+                const elementHasActive = document.querySelector(".active");
+                // check if element is found and if the founded element isn't clicked now
+                if (elementHasActive && this !== elementHasActive) {
+                    elementHasActive.classList.remove("active");
+                    elementHasActive.childNodes[0].classList.remove("active");
+                    elementHasActive.childNodes[0].childNodes[0].classList.remove("active");
+                }
+                //click twice => close
+                this.classList.toggle("active");
+                this.childNodes[0].classList.toggle("active");
+                this.childNodes[0].childNodes[0].classList.toggle("active");
+            }
+            btnAudioClicked = false;
         });
-        
-    
+    });
 }
 
