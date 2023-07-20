@@ -645,7 +645,7 @@ dd ul {
     max-width: 891px;
   }
 }
-@media screen and (max-width: 850px) {
+@media screen and (max-device-width: 850px) {
   h1 {
     font-size: 24px;
     margin-bottom: 5px;
@@ -671,13 +671,13 @@ dd ul {
     row-gap: 5px;
   }
 }
-@media screen and (max-width: 750px) {
+@media screen and (max-device-width: 750px) {
   #div_resultat {
     max-width: 335px;
     max-width: 350px;
   }
 }
-@media screen and (max-width: 375px) {
+@media screen and (max-device-width: 375px) {
   #search_bar input {
     min-width: 270px;
     padding: 0;

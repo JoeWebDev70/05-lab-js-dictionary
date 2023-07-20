@@ -385,7 +385,7 @@ dd{
     }
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-device-width: 850px) {
     h1 {
         font-size: 24px;
         margin-bottom: 5px;
@@ -420,14 +420,14 @@ dd{
 
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-device-width: 750px) {
     #div_resultat{
         max-width: 335px;
         max-width: 350px;
     }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-device-width: 375px) {
     
     // Form : search Bar
     #search_bar {
