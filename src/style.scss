@@ -11,8 +11,8 @@
 body {
     margin: 0;
     min-height: 100vh;
-    padding: 25px;
-    box-sizing: border-box;    
+    padding: 1.5625rem;
+    @include BoxSizing(border-box);    
 }
 
 .light_mode_body{
@@ -25,8 +25,8 @@ header{
 }
 
 #logo {
-    border: solid 1px $colorDarkBlue;
-    border-radius: 10px;  
+    border: solid 0.0625rem $colorDarkBlue;
+    border-radius: 0.625rem;  
 }
 
 //buttons for modals windows settings
@@ -42,26 +42,26 @@ header{
 
 // general typography and settings
 h1 {
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: 700;
-    margin: 40px 65px 0 70px;
+    margin: 2.5rem 4.0625rem 0 4.375rem;
     text-align: center;
 }
 
 h2 {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 700;
     margin: 0;
 }
 
 h3 {
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 700;
-    margin: 20px 0;
+    margin: 1.25rem 0;
 }
 
 p {
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 400;
     margin: 0;
 }
@@ -77,7 +77,7 @@ a:hover {
 
 main{
     display: flex;
-    column-gap: 40px;
+    column-gap: 2.5rem;
 }
 
 img {
@@ -86,7 +86,7 @@ img {
 
 #credits_page_link{
     text-align: center;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-style: italic;
     opacity: 0.8;
 }
@@ -101,7 +101,7 @@ img {
 #sticky {
     position: sticky;
     top: 10%;  
-    margin-left: -25px;
+    margin-left: -1.5625rem;
 }
 
 // right part of component
@@ -114,7 +114,7 @@ img {
 
 // Form : search Bar
 #search_bar {
-    margin: 55px 0 25px 50px;
+    margin: 3.4375rem 0 1.5625rem 3.125rem;
     display: flex;
     align-items: center;
 
@@ -122,18 +122,18 @@ img {
         height: 45px;
         width: 60%;
         min-width: 425px;
-        padding: 0 20px;
+        padding: 0 1.25rem;
         @include BoxSizing(border-box);
-        border: 1px solid $colorDarkBlue;
-        border-radius: 20px;
-        box-shadow: 5px 10px 5px 0px $colorShadowLightTeme;
+        border: 0.0625rem solid $colorDarkBlue;
+        border-radius: 1.25rem;
+        @include BoxShadow($colorShadowLightTeme, 0.3125rem, 0.3125rem, 0.3125rem);
         position: relative;
-        text-indent: 15px;
+        text-indent: 0.9375rem;
     }
 
     input:focus {
         border: none;
-        outline: 1px solid $colorSepia;
+        outline: 0.0625rem solid $colorSepia;
     }
 
     input::placeholder {
@@ -180,7 +180,7 @@ img {
 #div_resultat{
     min-width: 750px;
     max-width: 1225px;
-    padding-right: 30px;
+    padding-right: 1.875rem;
 }
 
 dl{
@@ -188,11 +188,11 @@ dl{
 }
 
 .panel{
-    border: 1px solid $colorDarkBlue;
-    border-radius: 10px;
-    padding: 15px 25px;
-    box-sizing: border-box;
-    margin-top: 40px;
+    border: 0.0625rem solid $colorDarkBlue;
+    border-radius: 0.625rem;
+    padding: 0.9375rem 1.5625rem;
+    @include BoxSizing(border-box);
+    margin-top: 2.5rem;
 }
 
 .panel.active{
@@ -204,7 +204,7 @@ dl{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    column-gap: 15px;
+    column-gap: 0.9375rem;
     cursor: pointer;
 }
 
@@ -212,25 +212,29 @@ dl{
     content: '\005E '; /*\005E \1431*/
     transform:rotate(0.5turn);
     color: $colorSepia;
-    font-size: 25px;
-    margin-bottom: 5px;
+    font-size: 1.5625rem;
+    margin-bottom: 0.3125rem;
 }
 
 .opening_panel.active::after{
     transform:rotate(1turn);
     margin-bottom: 0;
-    margin-top: 5px;
+    margin-top: 0.3125rem;
+}
+
+.opening_panel.hide::after{
+    visibility: hidden;
 }
 
 .opening_panel > div{
     display: flex;
     align-items: center;
-    column-gap: 15px;
+    column-gap: 0.9375rem;
 }
 
 .opening_panel > div div{
     display: flex;
-    column-gap: 15px;
+    column-gap: 0.9375rem;
 }
 
 dt.active + dd{
@@ -239,11 +243,11 @@ dt.active + dd{
 
 dd{
     margin: 0;
-    height: 0px;   
+    height: 0;   
     overflow: hidden;
 
     h2{
-        margin-top: 5px;
+        margin-top: 0.3125rem;
     }
 
     ul {
@@ -319,7 +323,7 @@ dd{
 .dark_mode #search_bar {
     input {
         border-color: $colorSepia;
-        box-shadow: 5px 10px 5px 0px $colorShadowDarkTeme;
+        @include BoxShadow($colorShadowDarkTeme, 0.3125rem, 0.3125rem, 0.3125rem);
         background-color: $colorBgDarkTheme;
         color: $colorTxtDarkTheme;
     }
@@ -345,25 +349,23 @@ dd{
     color: $colorSepia;
 }
 
-.light_favicon{
-    filter: invert(100%);
-}
-
 @media screen and (max-width: 1140px) {
     
     main{
         flex-direction: column;
         align-items: center;
-        row-gap: 40px;    
+        row-gap: 2.5rem;    
     }
     
     h1 {
-        margin: 40px 0 40px 0;
+        margin: 2.5rem 0 2.5rem 0;
     }
 
     #logo{
         margin-left: 0;
     }
+
+//TODO : REMETTRE EN COLONNE
 
     #sticky{
         align-self: center;
@@ -371,12 +373,12 @@ dd{
 
     #credits_page_link{
         text-align: center;
-        font-size: 8px;
+        font-size: 0.5rem;
         font-style: italic;
         opacity: 0.8;
     }
     #search_bar {
-        margin-top: 5px;
+        margin-top: 0.3125rem;
     }
 
     #div_resultat{
@@ -387,8 +389,8 @@ dd{
 
 @media screen and (max-device-width: 850px) {
     h1 {
-        font-size: 24px;
-        margin-bottom: 5px;
+        font-size: 1.5rem;
+        margin-bottom: 0.3125rem;
     }
 
     #sticky{
@@ -398,7 +400,7 @@ dd{
     // Form : search Bar
     #search_bar {
         margin: 0;
-        margin-left: 50px;
+        margin-left: 3.125rem;
 
         input {
             min-width: 300px;
@@ -415,7 +417,7 @@ dd{
     .opening_panel > div{
         flex-direction: column;
         align-items: start;
-        row-gap: 5px;
+        row-gap: 0.3125rem;
     }
 
 }
@@ -429,7 +431,7 @@ dd{
 
 @media screen and (max-device-width: 375px) {
     
-    // Form : search Bar
+    // Form : search Barx
     #search_bar {
         input {
             min-width: 270px;

@@ -34,14 +34,14 @@
     visibility: hidden;
     max-width: 375px;
     min-width: 300px;
-    padding: 25px;
+    padding: 1.5625rem;
     @include BoxSizing(border-box);
     background: #fff;
-    border-radius: 5px;
+    border-radius: 0.3125rem;
     position: absolute;
     top: 40%;
     left: 50%;
-    transform: translate(-50%, calc(-50% - 50px));
+    transform: translate(-50%, calc(-50% - 3.125rem));
     transition: opacity 0.4s ease-out,
     transform 0.4s ease-out;
 }
@@ -59,13 +59,13 @@
 }
 
 .close_modal {
-    padding: 3px 6px;
+    padding: 0.1875rem 0.375rem;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 0.3125rem;
+    font-size: 1rem;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 0.625rem;
+    right: 0.625rem;
     background-color: $colorError;
     color: $colorTxtDarkTheme;
     cursor: pointer;
@@ -73,20 +73,20 @@
 
 //modal windows for setting font family and light/dark theme
 #modal_setting_tittle {
-        margin: 5px 0 30px 0;
+        margin: 0.3125rem 0 1.875rem 0;
 
     +div {
         display: flex;
         justify-content: center;
         align-items: center;
-        column-gap: 65px;
+        column-gap: 4.0625rem;
     }
 }
 
 #font_choice {
     display: flex;
     flex-direction: column;
-    row-gap: 15px;
+    row-gap: 0.9375rem;
 
     div {
         display: flex;
@@ -95,8 +95,8 @@
 
     input {
         @include Appearance(none);
-        padding: 5px;
-        border: 1px solid $colorSepia;
+        padding: 0.3125rem;
+        border: 0.0625rem solid $colorSepia;
         border-radius: 50%;
     }
 
@@ -111,12 +111,12 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-radius: 20px;
+    border-radius: 1.25rem;
     cursor: pointer;
     position: relative;
-    border: solid 1px $colorDarkBlue;
+    border: solid 0.0625rem $colorDarkBlue;
     background-color: $colorBgLightTheme;
-    box-shadow: 0px 5px 5px 0px $colorShadowLightTeme;
+    @include BoxShadow($colorShadowLightTeme);
 }
 
 #toggle_div::before {
@@ -126,19 +126,19 @@
 
 #toggle_div::after {
     content: '\00263D';
-    margin-right: 5px;
-    margin-bottom: 2px;
+    margin-right: 0.3125rem;
+    margin-bottom: 0.125rem;
 }
 
 #toggle_btn {
     width: 25px;
     height: 25px;
     @include Appearance(none);
-    border-radius: 25px;
+    border-radius: 1.5625rem;
     cursor: pointer;
-    border: solid 1px $colorSepia;
+    border: solid 0.0625rem $colorSepia;
     background-color: $colorDarkBlue;
-    box-shadow: 0px 5px 5px 0px $colorShadowDarkTeme;
+    @include BoxShadow($colorShadowLightTeme);
 }
 
 //dark mode
@@ -147,14 +147,14 @@
 }
 
 .dark_mode #toggle_div {
-    border: solid 1px $colorSepia;
+    border: solid 0.0625rem $colorSepia;
     background-color: $colorBgLightTheme;
-    box-shadow: 0px 5px 5px 0px $colorShadowDarkTeme;
+    @include BoxShadow();
 }
 
 .dark_mode #toggle_div::before {
-    margin-left: 5px;
-    margin-bottom: 2px;
+    margin-left: 0.3125rem;
+    margin-bottom: 0.125rem;
     content: '\002600';
     color: black;
 }
@@ -165,7 +165,7 @@
 }
 
 .dark_mode #toggle_btn {
-    border: solid 1px $colorDarkBlue;
+    border: solid 0.0625rem $colorDarkBlue;
     background-color: $colorSepia;
-    box-shadow: 0px 5px 5px 0px $colorShadowLightTeme;
+    @include BoxShadow($colorShadowLightTeme);
 }

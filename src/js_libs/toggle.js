@@ -4,16 +4,22 @@ const elements = document.querySelectorAll("body *");
 const preferColor = window.matchMedia("(prefers-color-scheme: dark)");
 let toggleChoice = body.getAttribute("class");
 const faviconElement = document.querySelector("link[rel='shortcut icon']");
-// console.log(faviconElement);
 
+if(!localStorage.getItem("toggleChoice")){
+    localStorage.href = 'index.html';
+}
+let TmpPreferColor = localStorage.getItem("toggleChoice");
+TmpPreferColor = localStorage.getItem("toggleChoice");
 
-if (preferColor.matches) {
+if (preferColor.matches || TmpPreferColor == "dark_mode_body") {
     elements.forEach(function (element) {
         element.classList.add("dark_mode");
     })
     body.classList.add("dark_mode_body");
     body.classList.remove("light_mode_body");
-    faviconElement.setAttribute("href", "./ressources/images/favicon_dark_16x16.webp");
+    if(preferColor.matches){
+        faviconElement.setAttribute("href", "./ressources/images/favicon_dark_16x16.webp");
+    }
 } else {
     elements.forEach(function (element) {
         element.classList.remove("dark_mode");

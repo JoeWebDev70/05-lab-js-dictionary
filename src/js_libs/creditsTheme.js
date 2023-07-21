@@ -1,15 +1,8 @@
 const creditBody = document.querySelector("#body_credits");
 const creditElements = document.querySelectorAll("#body_credits *");
 
-if(!localStorage.getItem("toggleChoice")){
-    localStorage.href = 'index.html';
-}
-let preferColor = localStorage.getItem("toggleChoice");
-
-window.addEventListener("storage", function(){
-    preferColor = localStorage.getItem("toggleChoice");
-    
-    if (preferColor == "dark_mode_body") {
+function setTheme(color){
+    if (color == "dark_mode_body") {
         creditElements.forEach(function (creditElement) {
             creditElement.classList.add("dark_mode");
         })
@@ -26,6 +19,19 @@ window.addEventListener("storage", function(){
             creditBody.classList.add("light_mode_body");
         }
     }
+}
+
+if(!localStorage.getItem("toggleChoice")){
+    localStorage.href = 'index.html';
+}
+
+let preferColorChoice = localStorage.getItem("toggleChoice");
+preferColorChoice = localStorage.getItem("toggleChoice");
+setTheme(preferColorChoice);
+
+window.addEventListener("storage", function(){
+    preferColorChoice = localStorage.getItem("toggleChoice");
+    setTheme(preferColorChoice);
 });
 
 

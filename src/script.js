@@ -12,7 +12,6 @@ const resultZone = document.querySelector("#div_resultat dl");
 let nodeToErase; //to count nodes created by displayResult or displayError
 const btnEraseInputValue = document.querySelector("#erase_data");
 let audioDisplay; //to display audio on click
-// let srcAudio; // to get src audio
 let btnAudioClicked = false;
 
 
@@ -131,7 +130,7 @@ function search(evt) {
                                             if(resultSynonyms == ""){
                                                 resultSynonyms = data[i].meanings[j].synonyms[l];
                                             }else{
-                                                resultSynonyms = resultSynonyms + '/' + data[i].meanings[j].synonyms[l];
+                                                resultSynonyms = resultSynonyms + ', ' + data[i].meanings[j].synonyms[l];
                                             } 
                                         }
                                     }
@@ -188,8 +187,7 @@ function displayResult(dataToDisplay) {
             let h2 = clone.querySelector("h2");
             let h3s = clone.querySelectorAll("h3");
             let ps = clone.querySelectorAll("p");
-            let uls = clone.querySelectorAll("ul");
-            let lis =  clone.querySelectorAll("li");
+            let ul = clone.querySelector("ul");
             let audio = clone.querySelector("audio");
 
             divs[0].appendChild(dt);
@@ -217,18 +215,13 @@ function displayResult(dataToDisplay) {
             for(let k = 0; k < tempContentDef.length; k++){
                 let tmpli = document.createElement("li");
                 tmpli.innerHTML += tempContentDef[k] + '<br>';
-                uls[0].appendChild(tmpli);
+                ul.appendChild(tmpli);
             }
-            dd.appendChild(uls[0]);
+            dd.appendChild(ul);
             h3s[1].textContent = h3Synonyms;
             dd.appendChild(h3s[1]);
-            let tempContentSyn = dataToDisplay[i].objSynonyms.split('/');
-            for(let l = 0; l < tempContentSyn.length; l++){
-                let tmpli = document.createElement("li");
-                tmpli.innerHTML += tempContentSyn[l] + '<br>';
-                uls[1].appendChild(tmpli);
-            }
-            dd.appendChild(uls[1]);
+            ps[3].textContent = dataToDisplay[i].objSynonyms;
+            dd.appendChild(ps[3]);
 
             resultZone.appendChild(clone);
         }
@@ -236,8 +229,15 @@ function displayResult(dataToDisplay) {
     
     audioDisplay = document.querySelectorAll(".audio_display");
     displayAudio(audioDisplay);
-    questions = document.querySelectorAll(".panel");
-    openClose(questions);
+    console.log(dataToDisplay.length);
+    
+    if(dataToDisplay.length > 1){
+        questions = document.querySelectorAll(".panel");
+        openClose(questions);
+    }else{
+        openSingleDef(document.querySelector(".panel"))
+    }
+    
     nodeToErase = resultZone.childNodes;
 }
 
@@ -254,7 +254,6 @@ function displayAudio(items){
         item.addEventListener("click", function(){
             btnAudioClicked = true;
             this.childNodes[1].play();
-            console.log(this.childNodes);
         });
     });
 }
@@ -267,17 +266,22 @@ function openClose(items) {
                 const elementHasActive = document.querySelector(".active");
                 // check if element is found and if the founded element isn't clicked now
                 if (elementHasActive && this !== elementHasActive) {
-                    elementHasActive.classList.remove("active");
-                    elementHasActive.childNodes[0].classList.remove("active");
-                    elementHasActive.childNodes[0].childNodes[0].classList.remove("active");
+                    elementHasActive.classList.remove("active"); //div panel
+                    elementHasActive.childNodes[0].classList.remove("active"); //dt
+                    elementHasActive.childNodes[0].childNodes[0].classList.remove("active"); //div opening panel
                 }
                 //click twice => close
-                this.classList.toggle("active");
-                this.childNodes[0].classList.toggle("active");
-                this.childNodes[0].childNodes[0].classList.toggle("active");
+                this.classList.toggle("active"); //div panel
+                this.childNodes[0].classList.toggle("active"); //dt
+                this.childNodes[0].childNodes[0].classList.toggle("active"); //div opening panel and after
             }
             btnAudioClicked = false;
         });
     });
 }
 
+function openSingleDef(item){
+    item.classList.add("active"); //div panel
+    item.childNodes[0].classList.add("active"); //dt
+    item.childNodes[0].childNodes[0].classList.add("hide"); //div opening panel:after
+}

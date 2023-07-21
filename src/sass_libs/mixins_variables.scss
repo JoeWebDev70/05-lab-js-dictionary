@@ -25,3 +25,7 @@ $colorError: #FC0000;
     -moz-box-sizing: $kindOfBox;
     box-sizing: $kindOfBox;
 }
+
+@mixin BoxShadow($color: $colorShadowDarkTeme, $offset-x: 0, $offset-y: 0.3125rem, $blur-radius: 0.3125rem, $spread-radius: 0){
+    box-shadow: $offset-x $offset-y $blur-radius $spread-radius $color;
+}
