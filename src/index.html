@@ -32,7 +32,7 @@
     <title>My Dictionary</title>
 </head>
 
-<body style="font-family: Roboto" class="light_mode_body">
+<body id="body_main" style="font-family: Roboto" class="light_mode_body transition_out">
     <!-- MODALS WINDOWS FOR SETTINGS -->
     <div class="modal_container" role="dialog" aria-labelledby="modal_setting_tittle"
         aria-describedby="modal_setting_content">
@@ -43,15 +43,15 @@
             <div id="modal_setting_content">
                 <div id="font_choice">
                     <div>
-                        <input type="radio" id="sans_serif" name="font" class="radio_checked" value="Roboto" checked>
+                        <input type="radio" id="sans_serif" name="font"  value="Roboto" checked>
                         <label for="sans_serif">sans serif</label>
                     </div>
                     <div>
-                        <input type="radio" id="serif" name="font" class="radio_unchecked" value="Roboto Serif">
+                        <input type="radio" id="serif" name="font" value="Roboto Serif">
                         <label for="serif">serif</label>
                     </div>
                     <div>
-                        <input type="radio" id="mono" name="font" class="radio_unchecked" value="Roboto Mono">
+                        <input type="radio" id="mono" name="font" value="Roboto Mono">
                         <label for="mono">mono</label>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                     alt="hand-drawn sketch, illustration of a hand holding a stack of books on which a cross-legged little boy is studying.">
             </p>
             <p id="credits_page_link">
-                <a href="./credits.html">Credits and legal mentions</a>
+                <a class="link_page" href="./credits.html">Credits and legal mentions</a>
             </p>
         </div> <!-- END left_col-->
         <div id="right_col"> <!-- search bar and result of research -->
@@ -95,6 +95,10 @@
                 <button type="submit" id="submit"></button>
             </form>
             <div id="div_resultat">
+                <div class="welcome">
+                    <h2>Welcome on My Dictionnary</h2>
+                    <p>Please enter your word.</p>
+                </div>
                 <dl>
                     <template id="temp_panel">
                         <div class="panel">
