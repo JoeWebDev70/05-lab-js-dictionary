@@ -13,7 +13,6 @@ body {
     min-height: 100vh;
     padding: 1.5625rem;
     @include BoxSizing(border-box); 
-    // opacity: 1; 
 }
 
 .transition_out{
@@ -106,12 +105,12 @@ img {
 #left_col{
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 #sticky {
     position: sticky;
-    top: 10%;  
+    position: -webkit-sticky; 
+    top: 0;  
     margin-left: -1.5625rem;
 }
 
@@ -179,11 +178,10 @@ img {
     }
 
     input:hover,
-    label:hover,
     #erase_data:hover,
     #submit:hover {
         cursor: pointer;
-        opacity: 0.6;
+        opacity: 0.8;
     }
 }
 
@@ -374,9 +372,12 @@ dd{
 }
 
 @media screen and (max-width: 1140px) {
-        
+    main{
+        column-gap: 1.25rem;
+    }
+
     h1 {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         margin: 2.5rem 0 2.5rem 0;
     }
 
@@ -384,8 +385,25 @@ dd{
         margin-left: 0;
     }
 
+    .welcome{
+        margin-top: 9.375rem;
+    
+        h2{
+            font-size: 1.125rem;
+        }
+    
+        p{
+            font-size: 0.875rem;
+            margin-top: 1.875rem;
+        }
+    }
+
+    #credits_page_link{
+        font-size: 0.5rem;
+    }
+
     #search_bar {
-        margin-top: 0.3125rem;
+        margin-top: 3.125rem;
     }
 
     #div_resultat{
@@ -395,7 +413,7 @@ dd{
     }
 }
 
-@media screen and (max-device-width: 850px) {
+@media screen and (max-width: 850px) {
    
     main{
         flex-direction: column;
@@ -409,13 +427,6 @@ dd{
 
     #sticky{
         display: none;
-    }
-
-    #credits_page_link{
-        text-align: center;
-        font-size: 0.5rem;
-        font-style: italic;
-        opacity: 0.8;
     }
 
     // Form : search Bar

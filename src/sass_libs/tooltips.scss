@@ -6,6 +6,7 @@
     visibility: hidden;
     width: 120px;
     background-color: #555;
+    font-size: 0.875rem;
     color: #fff;
     text-align: center;
     border-radius: 0.375rem;
@@ -33,4 +34,10 @@
   .tooltip_container:hover .tooltip_content {
     visibility: visible;
     opacity: 1;
+  }
+
+  @media screen and (max-width: 1140px) {
+    .tooltip_content {
+      font-size: 0.75rem;
+    }
   }

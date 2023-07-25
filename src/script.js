@@ -8,8 +8,9 @@ let hrefLink;
 
 const searchBarForm = document.querySelector("#search_bar");
 const searchZoneInput = document.querySelector("#search_zone");
+let txtPlaceHolder;
 if (searchZoneInput != null) {
-    const txtPlaceHolder = searchZoneInput.placeholder; //get placeholder initial texte to set it after error
+    txtPlaceHolder = searchZoneInput.placeholder; //get placeholder initial texte to set it after error
 }
 let questions; //div "panel" for open and close panel : get in displayResult function before clone template
 const resultZone = document.querySelector("#div_resultat dl");

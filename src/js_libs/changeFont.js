@@ -16,8 +16,12 @@ if(mainBody != null){
 if(!localStorage.getItem("fontChoice")){
     localStorage.href = 'index.html';
 }
-let TmpFontChoice = localStorage.getItem("fontChoice");
-TmpFontChoice = localStorage.getItem("fontChoice");
+let TmpFontChoice;
+if(localStorage.getItem("fontChoice") != null){
+    TmpFontChoice = localStorage.getItem("fontChoice");
+}else{
+    TmpFontChoice = fontChoice;
+}
 setFont(TmpFontChoice);
 
 //get if storage change
@@ -69,9 +73,11 @@ function setFont(font) {
     }
         
     //checked the radio button with the good value
-    let tmpFont = font.replaceAll("\"", "");
-    if(document.querySelector(`input[value="${tmpFont}"]`) != null){
-        document.querySelector(`input[value="${tmpFont}"]`).checked = true;
+    if(font != null){
+        let tmpFont = font.replaceAll("\"", "");
+        if(document.querySelector(`input[value="${tmpFont}"]`) != null){
+            document.querySelector(`input[value="${tmpFont}"]`).checked = true;
+        }
     }
 }
 

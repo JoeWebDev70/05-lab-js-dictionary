@@ -5,7 +5,12 @@ const elementsMain = document.querySelectorAll("#body_main *");
 const preferColor = window.matchMedia("(prefers-color-scheme: dark)");
 let toggleChoice;
 if(bodyMain != null){
-    toggleChoice = bodyMain.getAttribute("class"); //get default 
+    let tmpToggle = bodyMain.getAttribute("class").split(" ");
+    tmpToggle.forEach(function(classIn){
+        if(classIn.includes("_body")){
+            toggleChoice = classIn; //get default 
+        }
+    })
 }
 const faviconElement = document.querySelector("link[rel='shortcut icon']");
 //credits and legal mentions page
@@ -16,7 +21,9 @@ const elementsCredits = document.querySelectorAll("#body_credits *");
 if(!localStorage.getItem("toggleChoice")){
     localStorage.href = 'index.html';
 }
-toggleChoice = localStorage.getItem("toggleChoice");
+if(localStorage.getItem("toggleChoice") != null){
+    toggleChoice = localStorage.getItem("toggleChoice");
+}
 setTheme(toggleChoice);
 
 //get if storage change
@@ -63,7 +70,13 @@ if(toggleChoice == null){
 }
 
 function setToggleChoice(){
-    localStorage.removeItem("toggleChoice"); 
+    localStorage.removeItem("toggleChoice");
+    let tmpToggle = toggleChoice.split(" ");
+    tmpToggle.forEach(function(classIn){
+        if(classIn.includes("_body")){
+            toggleChoice = classIn; //get default 
+        }
+    })
     localStorage.setItem("toggleChoice", toggleChoice);
 }
 
