@@ -171,7 +171,7 @@ function displayResult(dataToDisplay) {
             let h2 = clone.querySelector("h2");
             let h3s = clone.querySelectorAll("h3");
             let ps = clone.querySelectorAll("p");
-            let ul = clone.querySelector("ul");
+            let ol = clone.querySelector("ol");
             let audio = clone.querySelector("audio");
 
             divs[0].appendChild(dt);
@@ -198,10 +198,10 @@ function displayResult(dataToDisplay) {
             let tempContentDef = dataToDisplay[i].objDefinitions.split('/');
             for(let k = 0; k < tempContentDef.length; k++){
                 let tmpli = document.createElement("li");
-                tmpli.innerHTML += tempContentDef[k];
-                ul.appendChild(tmpli);
+                tmpli.innerHTML = tempContentDef[k];
+                ol.appendChild(tmpli);
             }
-            dd.appendChild(ul);
+            dd.appendChild(ol);
             h3s[1].textContent = h3Synonyms;
             dd.appendChild(h3s[1]);
             ps[3].textContent = dataToDisplay[i].objSynonyms;

@@ -258,10 +258,8 @@ dd{
         margin-top: 0.3125rem;
     }
 
-    ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
+    li{
+        margin-bottom: 0.3125rem;
     }
 }
 
@@ -322,9 +320,7 @@ dd{
 }
 
 .dark_mode a {
-
-    color: $colorTxtDarkTheme;
-    
+    color: $colorTxtDarkTheme;  
 }
 
 .dark_mode a:hover {
@@ -373,6 +369,9 @@ dd{
     color: $colorSepia;
 }
 
+.dark_mode .panel{
+    background-color: $colorDarkBlue;
+}
 
 @media screen and (max-width: 1140px) {
     main{
@@ -383,8 +382,6 @@ dd{
         font-size: 1.25rem;
         margin: 2.5rem 0 2.5rem 0;
     }
-
-
 
     #logo{
         margin-left: 0;
@@ -404,7 +401,7 @@ dd{
     }
 
     #credits_page_link{
-        font-size: 0.5rem;
+        font-size: 10px;
     }
 
     #search_bar {
@@ -443,7 +440,6 @@ dd{
             min-width: 300px;
             padding: 0;
         }
-
     }
 
     #div_resultat{
@@ -461,24 +457,32 @@ dd{
 
 @media screen and (max-width: 750px) {
     #div_resultat{
-        max-width: 335px;
+        min-width: 335px;
         max-width: 350px;
     }
 }
 
-@media screen and (max-device-width: 375px) {
+@media screen and (max-width: 375px) {
     
-    // Form : search Barx
-    #search_bar {
-        input {
-            min-width: 270px;
-            padding: 0;
-        }
+    h2 {
+        font-size: 18px;
+    }
 
+    h3 {
+        font-size: 14px;
+    }
+
+    p, li {
+        font-size: 12px;
+    }
+
+    a {
+        text-decoration: none;
+        color: $colorTxtLightTheme;
     }
 
     #div_resultat{
         min-width: 270px;
-        max-width: 270px;
+        max-width: 325px;
     }
 }

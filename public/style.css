@@ -571,10 +571,8 @@ dd {
 dd h2 {
   margin-top: 0.3125rem;
 }
-dd ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+dd li {
+  margin-bottom: 0.3125rem;
 }
 
 .audio_display:hover {
@@ -675,6 +673,10 @@ dd ul {
   color: #FCA311;
 }
 
+.dark_mode .panel {
+  background-color: #14213D;
+}
+
 @media screen and (max-width: 1140px) {
   main {
     column-gap: 1.25rem;
@@ -697,7 +699,7 @@ dd ul {
     margin-top: 1.875rem;
   }
   #credits_page_link {
-    font-size: 0.5rem;
+    font-size: 10px;
   }
   #search_bar {
     margin-top: 3.125rem;
@@ -740,17 +742,26 @@ dd ul {
 }
 @media screen and (max-width: 750px) {
   #div_resultat {
-    max-width: 335px;
+    min-width: 335px;
     max-width: 350px;
   }
 }
-@media screen and (max-device-width: 375px) {
-  #search_bar input {
-    min-width: 270px;
-    padding: 0;
+@media screen and (max-width: 375px) {
+  h2 {
+    font-size: 18px;
+  }
+  h3 {
+    font-size: 14px;
+  }
+  p, li {
+    font-size: 12px;
+  }
+  a {
+    text-decoration: none;
+    color: #232323;
   }
   #div_resultat {
     min-width: 270px;
-    max-width: 270px;
+    max-width: 325px;
   }
 }
