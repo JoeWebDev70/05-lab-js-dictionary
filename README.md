@@ -33,3 +33,5 @@ Production attendue
 - Page JS
 - Les médias
 - Figma
+
+Link to Project: <a href="https://github.com/JoeWebDev70/05-lab-js-dictionary_project">05-lab-js-dictionary_project</a>
