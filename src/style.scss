@@ -54,7 +54,7 @@ header{
 h1 {
     font-size: 2rem;
     font-weight: 700;
-    margin: 2.5rem 4.0625rem 0 4.375rem;
+    margin: 4.0625rem 0 0 0;
     text-align: center;
 }
 
@@ -111,7 +111,6 @@ img {
     position: sticky;
     position: -webkit-sticky; 
     top: 0;  
-    margin-left: -1.5625rem;
 }
 
 // right part of component
@@ -120,11 +119,12 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 80px;
 }
 
 // Form : search Bar
 #search_bar {
-    margin: 3.4375rem 0 1.5625rem 3.125rem;
+    margin-left: 3.125rem;
     display: flex;
     align-items: center;
 
@@ -380,15 +380,10 @@ dd{
 
     h1 {
         font-size: 1.25rem;
-        margin: 2.5rem 0 2.5rem 0;
-    }
-
-    #logo{
-        margin-left: 0;
     }
 
     .welcome{
-        margin-top: 9.375rem;
+        margin-top: 6.25rem;
     
         h2{
             font-size: 1.125rem;
@@ -401,11 +396,7 @@ dd{
     }
 
     #credits_page_link{
-        font-size: 10px;
-    }
-
-    #search_bar {
-        margin-top: 3.125rem;
+        font-size: 0.625rem;
     }
 
     #div_resultat{
@@ -424,20 +415,24 @@ dd{
     }
 
     h1 {
-        margin-bottom: 0.3125rem;
+        margin-bottom: 1.25rem;
     }
 
     #sticky img{
         display: none;
     }
 
+    #right_col{
+        margin-top: 1.875rem;
+    }   
+
     // Form : search Bar
     #search_bar {
-        margin: 0;
-        margin-left: 3.125rem;
+        margin-top: 0;
 
         input {
-            min-width: 300px;
+            min-width: 400px;
+            max-width: 450px;
             padding: 0;
         }
     }
@@ -456,6 +451,13 @@ dd{
 }
 
 @media screen and (max-width: 750px) {
+    // Form : search Bar
+    #search_bar {
+        input {
+            min-width: 300px;
+            max-width: 300px;
+        }
+    }
     #div_resultat{
         min-width: 335px;
         max-width: 350px;
@@ -463,17 +465,17 @@ dd{
 }
 
 @media screen and (max-width: 375px) {
-    
-    h2 {
-        font-size: 18px;
+
+    h1,h2 {
+        font-size: 1.125rem;
     }
 
     h3 {
-        font-size: 14px;
+        font-size: 0.875rem;
     }
 
     p, li {
-        font-size: 12px;
+        font-size: 0.75rem;
     }
 
     a {
@@ -481,8 +483,35 @@ dd{
         color: $colorTxtLightTheme;
     }
 
+    #right_col{
+        margin-top: 0;
+    }
+
+    // Form : search Bar
+    #search_bar {
+        margin-left:40px;
+        input {
+            min-width: 220px;
+            max-width: 300px;
+        }
+        input::placeholder {
+            font-size: 0.625rem;
+        }
+    }
     #div_resultat{
         min-width: 270px;
         max-width: 325px;
+    }
+
+    .welcome{
+        margin-top: 5rem;
+    
+        h2{
+            font-size: 1rem;
+        }
+    
+        p{
+            font-size: 0.75rem;
+        }
     }
 }
