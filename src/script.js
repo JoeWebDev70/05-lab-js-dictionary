@@ -198,7 +198,7 @@ function displayResult(dataToDisplay) {
             let tempContentDef = dataToDisplay[i].objDefinitions.split('/');
             for(let k = 0; k < tempContentDef.length; k++){
                 let tmpli = document.createElement("li");
-                tmpli.innerHTML += tempContentDef[k] + '<br>';
+                tmpli.innerHTML += tempContentDef[k];
                 ul.appendChild(tmpli);
             }
             dd.appendChild(ul);
