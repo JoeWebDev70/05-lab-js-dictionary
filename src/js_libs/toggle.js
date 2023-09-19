@@ -18,9 +18,6 @@ const bodyCredits = document.querySelector("#body_credits");
 const elementsCredits = document.querySelectorAll("#body_credits *");
 
 //get if local storage contain some value and set it 
-if(!localStorage.getItem("toggleChoice")){
-    localStorage.href = 'index.html';
-}
 if(localStorage.getItem("toggleChoice") != null){
     toggleChoice = localStorage.getItem("toggleChoice");
 }

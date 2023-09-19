@@ -13,9 +13,6 @@ if(mainBody != null){
 }
 
 //get if local storage contain some value and set it 
-if(!localStorage.getItem("fontChoice")){
-    localStorage.href = 'index.html';
-}
 let TmpFontChoice;
 if(localStorage.getItem("fontChoice") != null){
     TmpFontChoice = localStorage.getItem("fontChoice");
